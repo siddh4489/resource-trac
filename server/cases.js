@@ -11,7 +11,7 @@ var db = require('./pghelper'),
         clientSecret: config.api.clientSecret,
         redirectUri: config.api.redirectUri,
         apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
-        environment: 'sandbox',  // optional, salesforce 'sandbox' or 'production', production default
+        environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default
         mode: 'single' // optional, 'single' or 'multi' user mode, multi default
     });
 

@@ -5,9 +5,7 @@ var db = require('./pghelper'),
 
     userName = config.api.userName,
     password = config.api.password;
-    console.log('---clientId---'+config.api.clientId);
-    console.log('---clientSecret---'+config.api.clientSecret);
-    console.log('--redirectUri----'+config.api.redirectUri);
+   
      org = nforce.createConnection({
         clientId: config.api.clientId,
         clientSecret: config.api.clientSecret,
@@ -20,7 +18,10 @@ var db = require('./pghelper'),
 
 org.authenticate({ username: userName, password: password}, function(err, resp) {
     if(!err) {
-        console.log('nforce connection succeeded Cases');
+         console.log('---clientId---'+config.api.clientId);
+    console.log('---clientSecret---'+config.api.clientSecret);
+    console.log('--redirectUri----'+config.api.redirectUri);
+        console.log('nforce connection succeeded Cases----');
      
     } else {
         console.log('nforce connection failed: ' + err.message);

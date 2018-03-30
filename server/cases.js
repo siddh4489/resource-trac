@@ -16,7 +16,7 @@ var db = require('./pghelper'),
     });
 
 
-org.authenticate({ username: userName, password: password}, function(err, resp) {
+org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2', password: '72scjp72'}, function(err, resp) {
     if(!err) {
          console.log('---clientId---'+config.api.clientId);
     console.log('---clientSecret---'+config.api.clientSecret);

@@ -5,8 +5,10 @@ var db = require('./pghelper'),
 
     userName = config.api.userName,
     password = config.api.password;
-
-    org = nforce.createConnection({
+    console.log('---clientId---'+config.api.clientId);
+    console.log('---clientSecret---'+config.api.clientSecret);
+    console.log('--redirectUri----'+config.api.redirectUri);
+     org = nforce.createConnection({
         clientId: config.api.clientId,
         clientSecret: config.api.clientSecret,
         redirectUri: config.api.redirectUri,

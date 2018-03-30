@@ -7,11 +7,11 @@ var db = require('./pghelper'),
     password = config.api.password;
    
      org = nforce.createConnection({
-        clientId: '',
-        clientSecret: '',
+        clientId: config.api.clientId,
+        clientSecret: config.api.clientSecret,
         redirectUri: config.api.redirectUri,
         apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
-        environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default
+        environment: 'sandbox',  // optional, salesforce 'sandbox' or 'production', production default
         mode: 'single' // optional, 'single' or 'multi' user mode, multi default
     });
 
@@ -24,7 +24,7 @@ org.authenticate({ username: userName, password: password}, function(err, resp) 
         console.log('nforce connection succeeded Cases----sid');
      
     } else {
-        console.log('nforce connection failed: ' + err.message);
+        console.log('nforce connection failed: Raj....' + err.message);
      
     }
 });

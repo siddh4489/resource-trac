@@ -24,7 +24,7 @@ org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2', password:
         console.log('nforce connection succeeded Cases----sid');
      
     } else {
-        console.log('nforce connection failed: Raj....' + err.message);
+        console.log('nforce connection failed: Raj 1....' + err.message);
      
     }
 });

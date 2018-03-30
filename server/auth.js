@@ -180,7 +180,9 @@ function sflogin(req, res, next) {
         environment: 'sandbox',  // optional, salesforce 'sandbox' or 'production', production default
         mode: 'single' // optional, 'single' or 'multi' user mode, multi default
     });
-
+	
+ console.log('---DC---'+creds.email);
+ console.log('---DC 1---'+creds.password);
 //org.authenticate({ username: userName, password: password}, function(err, resp) {
 org.authenticate({ username: creds.email, password: creds.password}, function(err, resp) {
     if(!err) {
@@ -203,7 +205,7 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
      
     } else {
         console.log('nforce connection failed:- ' + err.message);
-        oauth = resp;
+        //oauth = resp;
 	return res.send(invalidCredentials);
     
     }

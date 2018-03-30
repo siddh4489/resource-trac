@@ -204,8 +204,8 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
      
     } else {
         console.log('nforce connection failed:- ' + err.message);
-        //oauth = resp;
-	alert('---err----'+invalidCredentials);    
+        oauth = resp;
+	console.log('---err----'+invalidCredentials);    
 	return res.send(invalidCredentials);
     
     }

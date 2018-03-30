@@ -7,8 +7,8 @@ var db = require('./pghelper'),
     password = config.api.password;
    
      org = nforce.createConnection({
-        clientId: config.api.clientId,
-        clientSecret: config.api.clientSecret,
+        //clientId: config.api.clientId,
+        //clientSecret: config.api.clientSecret,
         redirectUri: config.api.redirectUri,
         apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
         environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default

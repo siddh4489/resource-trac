@@ -21,7 +21,7 @@ org.authenticate({ username: userName, password: password}, function(err, resp) 
          console.log('---clientId---'+config.api.clientId);
     console.log('---clientSecret---'+config.api.clientSecret);
     console.log('--redirectUri----'+config.api.redirectUri);
-        console.log('nforce connection succeeded Cases----');
+        console.log('nforce connection succeeded Cases----sid');
      
     } else {
         console.log('nforce connection failed: ' + err.message);

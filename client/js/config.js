@@ -1,6 +1,6 @@
 angular.module('nibs.config', [])
 
-    .constant('SERVER_URL', 'https://bandwidth-trac.herokuapp.com')
+    .constant('SERVER_URL', 'https://resource-visibility.herokuapp.com')
 
     .constant('FB_APP_ID','1728552984063811')
                            

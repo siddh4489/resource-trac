@@ -13,7 +13,7 @@ var db = require('./pghelper'),
             mode: 'single' // optional, 'single' or 'multi' user mode, multi default
         });
 
-    org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2', password: '72scjp72'}, function(err, resp) {
+    org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2', password: '72scjp72ymZYtHeBIhcFtlCfSAOuy09H'}, function(err, resp) {
         if(!err) {
         console.log(' Logged in user id : '+req.body.uid);   
         var q = "SELECT Id,Name FROM Account";
@@ -28,7 +28,7 @@ var db = require('./pghelper'),
               }
         });
         } else {
-            console.log('nforce connection failed:-- ' + err.message);
+            console.log('nforce connection failed Error:-- ' + err.message);
             oauth = resp;
         }
     });

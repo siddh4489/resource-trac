@@ -400,7 +400,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
                 })
                 .error(function (err) {
-                    alert(' dev2 '+err);
                     $ionicPopup.alert({title: 'Oops', content: err});
                 });
         };

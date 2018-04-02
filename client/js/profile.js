@@ -110,6 +110,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
                     }
                 
                     console.log('taskDataList---'+taskDataList);
+                      console.log('taskDataList---'+JSON.stringify(taskDataList));
                     var peopleElement = document.getElementById("people");
                     var orgChart = new getOrgChart(peopleElement, {
                         color:"mediumdarkblue",

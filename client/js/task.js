@@ -81,6 +81,7 @@ angular.module('nibs.task', ['nibs.config'])
        
 
        $scope.submit = function () {
+           alert(' Submit -'+JSON.stringify($scope.task));
            Task.create($scope.task).success(function() {
                      $ionicPopup.alert({title: 'Thank You', content: 'Your Task submitted successfully.'});
                      $scope.task = {};

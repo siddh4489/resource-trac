@@ -1,10 +1,13 @@
 var db = require('./pghelper'),
     config = require('./config'),
-    nforce = require('nforce');
+    nforce = require('nforce'),
+    session = require('express-session');
 
 function getTasklists(req, res, next) {
-   
-
+    
+    console.log('--3---'+req.session);
+    console.log('---33----'+req.session.email);
+    console.log('---3---3---'+req.session.password);
     var oauth;
      org = nforce.createConnection({
             clientId: config.api.clientId,

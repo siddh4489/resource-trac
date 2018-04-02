@@ -101,11 +101,11 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                         $rootScope.user = data.sfuser;
                         $window.localStorage.user = JSON.stringify(data.sfuser);
                         $window.localStorage.token = data.token;
-                        $window.localStorage.setItem('sid','raj');
-                        $window.localStorage.setItem('username',data.runninguser[0].firstname);
-                        $window.localStorage.setItem('sfuser',data.sfuser);
-                        $window.localStorage.setItem('sfpassword',data.sfpassword);
-                        $window.localStorage.setItem('uid',data.runninguser[0].id);
+                        //$window.localStorage.setItem('sid','raj');
+                        $window.localStorage.setItem('username',data.runninguser[0].name);
+                        //$window.localStorage.setItem('sfuser',data.sfuser);
+                        //$window.localStorage.setItem('sfpassword',data.sfpassword);
+                        //$window.localStorage.setItem('uid',data.runninguser[0].id);
                     
                     
                     console.log('sid user data is'+$window.localStorage.getItem('sfuser'));    
@@ -375,7 +375,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
         $window.localStorage.removeItem('user');
         $window.localStorage.removeItem('token');
-        $window.localStorage.removeItem('sid');
 
         $scope.sfuser = {};
 
@@ -387,7 +386,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 console.log('SF Login data :--' + JSON.stringify(data)); 
                 console.log('SF Login data 1 :--' + JSON.stringify(data.runninguser));
                 console.log('SF Login data 2 :--' + data.runninguser[0].firstname);
-                $rootScope.username = data.runninguser[0].name;
+                $rootScope.username = $window.localStorage.getItem('username');
                 
                 if(data.status == "1"){
                        console.log(' IF '+data);
@@ -452,8 +451,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                  $rootScope.user = null;
                  $window.localStorage.removeItem('user');
                  $window.localStorage.removeItem('token');
-                 $window.localStorage.removeItem('sid');
-
+                 $window.localStorage.removeItem('username');
                  $state.go('app.welcome');
               } else {
                  $state.go('app.profile');

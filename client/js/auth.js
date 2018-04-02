@@ -387,7 +387,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 console.log('SF Login data :--' + JSON.stringify(data)); 
                 console.log('SF Login data 1 :--' + JSON.stringify(data.runninguser));
                 console.log('SF Login data 2 :--' + data.runninguser[0].firstname);
-                $rootScope.username = data.runninguser[0].firstname;
+                $rootScope.username = data.runninguser[0].email;
                 
                 if(data.status == "1"){
                        console.log(' IF '+data);

@@ -64,7 +64,8 @@ function createTask(req, res, next) {
             taskObj.set('Task_Description__c', req.body.desc);
             taskObj.set('Name', req.body.name);
             taskObj.set('Manager__c', req.body.managerid);
-           
+            taskObj.set('System_Date__c', req.body.sysdate);
+         
             org.insert({ sobject: taskObj}, function(err, resp){
                 if (err) {
                     console.log('First Task insert failed: ' + JSON.stringify(err));

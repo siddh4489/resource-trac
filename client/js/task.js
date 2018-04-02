@@ -42,6 +42,8 @@ angular.module('nibs.task', ['nibs.config'])
         } 
 
        today = mm + '/' + dd + '/' + yyyy;
+       $("#date").text(today);
+
        $scope.manager = {};
        $scope.task = {};
        $scope.task = {sysdate:today,managerid:'',projecttype:'',suser: $window.localStorage.getItem('sfuser'),spassword: $window.localStorage.getItem('sfpassword')};

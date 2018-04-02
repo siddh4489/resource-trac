@@ -197,7 +197,7 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
 
 		      if(!err && resp1.records) {
 			      
-			      return res.send({'status':'1','token':org.oauth.access_token,'runninguser':resp1.records,'sfuser':creds.email,'sfpassword':creds.password});
+			      return res.send({'ruser':ses.email,status':'1','token':org.oauth.access_token,'runninguser':resp1.records,'sfuser':creds.email,'sfpassword':creds.password});
 		      }else{
 			 //res.send({'status':'1','error':err.message});
 		      }

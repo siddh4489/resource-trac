@@ -15,7 +15,7 @@ function managerList(req, res, next) {
             clientSecret: config.api.clientSecret,
             redirectUri: config.api.redirectUri,
             apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
-            environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default
+            environment: 'sandbox',  // optional, salesforce 'sandbox' or 'production', production default
             mode: 'single' // optional, 'single' or 'multi' user mode, multi default
         });
 
@@ -62,7 +62,7 @@ function createTask(req, res, next) {
             taskObj.set('No_of_Hours__c', req.body.hours);
             taskObj.set('Project_Type__c', req.body.projecttype);
             taskObj.set('Task_Description__c', req.body.desc);
-            taskObj.set('Task_Name__c', req.body.name);
+            taskObj.set('Name', req.body.name);
             taskObj.set('Manager__c', req.body.managerid);
            
             org.insert({ sobject: taskObj}, function(err, resp){

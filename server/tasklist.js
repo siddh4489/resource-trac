@@ -54,7 +54,22 @@ function getResourceview(req, res, next) {
     org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
         if(!err) {
         console.log(' Logged in user id : '+req.body.uid);   
-        var q = "SELECT Id,Name,Task_Description__c,Project_Type__c,No_of_Hours__c,Manager_Name__c,Manager__c,createdbyid,Created_Name__c  FROM Task__c where Task_Date__c = 2018-03-29 ";
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+
+        if(dd<10) {
+            dd = '0'+dd
+        } 
+
+        if(mm<10) {
+            mm = '0'+mm
+        } 
+
+       today = mm + '/' + dd + '/' + yyyy;    
+        var q = "SELECT Id,Name,Task_Description__c,Project_Type__c,No_of_Hours__c,Manager_Name__c,Manager__c,createdbyid,Created_Name__c,Task_Date__c,System_Date__c  FROM Task__c where System_Date__c = '"+today+"'";
+            console.log('----tree vie ----'+q);
             org.query({ query: q }, function(err, resp){
               if(!err && resp.records) {
                  console.log(' resp.records in user id : '+resp.records); 

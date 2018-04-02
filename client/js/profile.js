@@ -89,7 +89,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
 
     //Controllers
     .controller('ProfileCtrl', function ($rootScope, $scope,$window, $state, Taskview, STATUS_LABELS, STATUS_DESCRIPTIONS) {
-       
+      $rootScope.username = $window.localStorage.getItem('username');
       $scope.taskview = {};
         $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
             Taskview.getResourveView($scope.sfu).success(function(datalist) {

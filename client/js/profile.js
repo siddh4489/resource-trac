@@ -94,8 +94,10 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
         $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
             Taskview.getResourveView($scope.sfu).success(function(datalist) {
                 
-                   var taskDataList = [];
-                    for(i=0;i<datalist.length;i++){
+                  var taskDataList = [];
+                  if(datalist.length>0){
+                  
+                      for(i=0;i<datalist.length;i++){
                        var taskData = {};
                         taskData.id = datalist[i].createdbyid;
                         taskData.parentId = datalist[i].manager__c;
@@ -119,6 +121,8 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
                         photoFields: ["image"],
                         dataSource: taskDataList
                     });
+
+                  }
              });
     })
 

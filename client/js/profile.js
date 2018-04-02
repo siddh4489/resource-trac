@@ -95,7 +95,6 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
             Taskview.getResourveView($scope.sfu).success(function(datalist) {
                 
                   var taskDataList = [];
-                 alert('-datalist.length-'+datalist.length);
                   if(datalist.length>0){
                       for(i=0;i<datalist.length;i++){
                        var taskData = {};

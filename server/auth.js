@@ -1,7 +1,7 @@
 var bcrypt = require('bcrypt'),
     db = require('./pghelper'),
     config = require('./config'),
-    uuid = require('node-uuid'),,
+    uuid = require('node-uuid'),
     session = require('express-session'),
     Q = require('q'),
     validator = require('validator'),

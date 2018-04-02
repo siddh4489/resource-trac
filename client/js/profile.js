@@ -98,7 +98,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
                   if(datalist.length>0){
                       for(i=0;i<datalist.length;i++){
                        var taskData = {};
-                        taskData.id = datalist[i].uniqueId__c;
+                        taskData.id = datalist[i].uniqueid__c;
                         taskData.parentId = datalist[i].manager__c;
                         taskData.taskname = 'Task :'+datalist[i].name;
                         taskData.desc = 'Description :'+datalist[i].task_description__c;

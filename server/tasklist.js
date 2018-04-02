@@ -42,7 +42,10 @@ function getTasklists(req, res, next) {
 
 
 function getResourceview(req, res, next) {
-   
+    
+    console.log('--3---'+req.session);
+    console.log('---33----'+req.session.email);
+    console.log('---3---3---'+req.session.password);
 
     var oauth;
      org = nforce.createConnection({

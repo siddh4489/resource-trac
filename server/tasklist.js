@@ -2,38 +2,6 @@ var db = require('./pghelper'),
     config = require('./config'),
     nforce = require('nforce');
 
-
-     var oauth;
-     org = nforce.createConnection({
-            clientId: config.api.clientId,
-            clientSecret: config.api.clientSecret,
-            redirectUri: config.api.redirectUri,
-            apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
-            environment: 'sandbox',  // optional, salesforce 'sandbox' or 'production', production default
-            mode: 'single' // optional, 'single' or 'multi' user mode, multi default
-        });
-
-    org.authenticate({ username: 'siddhrajsinh_atodari@symantec.com.dev2', password: '72scjp72ymZYtHeBIhcFtlCfSAOuy09H'}, function(err, resp) {
-        if(!err) {
-        console.log(' Logged in user id : '+req.body.uid);   
-        var q = "SELECT Id,Name FROM Account";
-        console.log('----q---'+q);
-            org.query({ query: q }, function(err, resp){
-              if(!err && resp.records) {
-                 console.log(' resp.records in user id : '+resp.records); 
-                 res.send(resp.records);
-              }else{
-                  console.log(' resp. no records: ');
-                 res.send('No record Available');
-              }
-        });
-        } else {
-            console.log('nforce connection failed Error:-- ' + err.message);
-            oauth = resp;
-        }
-    });
-
-
 function getTasklists(req, res, next) {
    
 
@@ -43,7 +11,7 @@ function getTasklists(req, res, next) {
             clientSecret: config.api.clientSecret,
             redirectUri: config.api.redirectUri,
             apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
-            environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default
+            environment: 'sandbox',  // optional, salesforce 'sandbox' or 'production', production default
             mode: 'single' // optional, 'single' or 'multi' user mode, multi default
         });
 
@@ -79,7 +47,7 @@ function getResourceview(req, res, next) {
             clientSecret: config.api.clientSecret,
             redirectUri: config.api.redirectUri,
             apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
-            environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default
+            environment: 'sandbox',  // optional, salesforce 'sandbox' or 'production', production default
             mode: 'single' // optional, 'single' or 'multi' user mode, multi default
         });
 

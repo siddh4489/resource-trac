@@ -53,6 +53,7 @@ function createTask(req, res, next) {
     console.log('---createTask hours--->'+req.body.hours);
     console.log('---createTask managerid--->'+req.body.managerid);
     console.log('---createTask projecttype--->'+req.body.projecttype);
+    console.log('---createTask sysdate--->'+req.body.sysdate);
     
     console.log('---createTask 1--->'+req.body.spassword);
     console.log('---createTask 2--->'+req.body.suser);

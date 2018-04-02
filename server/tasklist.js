@@ -71,7 +71,7 @@ function getResourceview(req, res, next) {
         } 
 
        today = mm + '/' + dd + '/' + yyyy;    
-        var q = "SELECT Id,Name,Task_Description__c,Project_Type__c,No_of_Hours__c,Manager_Name__c,Manager__c,createdbyid,Created_Name__c,Task_Date__c,System_Date__c  FROM Task__c where System_Date__c = '"+today+"'";
+        var q = "SELECT Id,Name,uniqueId__c,Task_Description__c,Project_Type__c,No_of_Hours__c,Manager_Name__c,Manager__c,createdbyid,Created_Name__c,Task_Date__c,System_Date__c  FROM Task__c where System_Date__c = '"+today+"'";
             console.log('----tree vie ----'+q);
             org.query({ query: q }, function(err, resp){
               if(!err && resp.records) {

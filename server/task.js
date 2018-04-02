@@ -48,16 +48,6 @@ function managerList(req, res, next) {
 
 
 function createTask(req, res, next) {
-    console.log('---createTask name --->'+req.body.name);
-    console.log('---createTask desc --->'+req.body.desc);
-    console.log('---createTask hours--->'+req.body.hours);
-    console.log('---createTask managerid--->'+req.body.managerid);
-    console.log('---createTask projecttype--->'+req.body.projecttype);
-    console.log('---createTask sysdate--->'+req.body.sysdate);
-    
-    console.log('---createTask 1--->'+req.body.spassword);
-    console.log('---createTask 2--->'+req.body.suser);
-    console.log('---createTask 3 --->'+JSON.stringify(req.body));
     
     var taskObj = nforce.createSObject('Task__c');
             taskObj.set('No_of_Hours__c', req.body.hours);

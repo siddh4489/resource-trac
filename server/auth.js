@@ -266,8 +266,10 @@ function login(req, res, next) {
  * @param next
  */
 function logout(req, res, next) {
+	req.session.reset();
+	res.redirect('/');
 	
-req.session.destroy(function(err){
+/*req.session.destroy(function(err){
 	if(err){
 		console.log(err);
 	}
@@ -275,7 +277,7 @@ req.session.destroy(function(err){
 	{
 		res.redirect('/');
 	}
-});
+});*/
     /*winston.info('logout');
     var token = req.headers['authorization'];
     winston.info('Logout token:' + token);

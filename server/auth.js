@@ -266,7 +266,17 @@ function login(req, res, next) {
  * @param next
  */
 function logout(req, res, next) {
-    winston.info('logout');
+	
+req.session.destroy(function(err){
+	if(err){
+		console.log(err);
+	}
+	else
+	{
+		res.redirect('/');
+	}
+});
+    /*winston.info('logout');
     var token = req.headers['authorization'];
     winston.info('Logout token:' + token);
     db.query('DELETE FROM tokens WHERE token = $1', [token])
@@ -274,7 +284,7 @@ function logout(req, res, next) {
             winston.info('Logout successful');
             res.send('OK');
         })
-        .catch(next);
+        .catch(next);*/
 };
 
 /**

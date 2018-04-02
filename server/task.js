@@ -1,6 +1,8 @@
     var db = require('./pghelper'),
     config = require('./config'),
-    nforce = require('nforce');
+    nforce = require('nforce'),
+    session = require('express-session');
+    
      
 function managerList(req, res, next) {
     console.log('---getManager--->'+req);
@@ -20,8 +22,10 @@ function managerList(req, res, next) {
         });
 
     //org.authenticate({ username: userName, password: password}, function(err, resp) {
-
-    org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
+    console.log('-- task--Email--'+req.session.email);
+    console.log('--tasl--Password--'+req.session.password);
+    //org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
+    org.authenticate({ username: req.session.email, password: req.session.password}, function(err, resp) {    
         if(!err) {
         var q = "SELECT Id,Name FROM User where  id = '00550000002ahmSAAQ'  or (managerid != '' and IsActive = true and managerid in ('00550000002ahmSAAQ','00538000004lNUdAAM'))";
  
@@ -49,6 +53,8 @@ function managerList(req, res, next) {
 
 function createTask(req, res, next) {
     
+    console.log('-- task created--Email--'+req.session.email);
+    console.log('--tasl created--Password--'+req.session.password);
     var taskObj = nforce.createSObject('Task__c');
             taskObj.set('No_of_Hours__c', req.body.hours);
             taskObj.set('Project_Type__c', req.body.projecttype);
@@ -57,10 +63,10 @@ function createTask(req, res, next) {
             taskObj.set('Manager__c', req.body.managerid);
             taskObj.set('System_Date__c', req.body.sysdate);
          
-            org.insert({ sobject: taskObj}, function(err, resp){
-                if (err) {
-                    console.log('First Task insert failed: ' + JSON.stringify(err));
-                    org.authenticate({username: req.body.suser, password: req.body.spassword}, function(err) {
+            //org.insert({ sobject: taskObj}, function(err, resp){
+                //if (err) {
+                //    console.log('First Task insert failed: ' + JSON.stringify(err));
+                    org.authenticate({username: req.session.email, password: req.session.password}, function(err) {
                         if (err) {
                             console.log('Authentication failed: ' + JSON.stringify(err));
                             return next(err);
@@ -75,12 +81,12 @@ function createTask(req, res, next) {
                                 }
                             });
                         }
-                    })
-                } else {
-                    console.log('First case insert worked');
-                    res.send('ok');
-                }
-            });
+                    });
+                //} else {
+                //    console.log('First case insert worked');
+                //    res.send('ok');
+               // }
+           // });
    
 };
 

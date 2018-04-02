@@ -23,7 +23,7 @@ function managerList(req, res, next) {
 
     org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
         if(!err) {
-        var q = "SELECT Id,Name FROM User where managerid != '' and IsActive = true and managerid in ('00550000002ahmSAAQ','00538000004lNUdAAM') ";
+        var q = "SELECT Id,Name FROM User where  id = '00550000002ahmSAAQ'  or (managerid != '' and IsActive = true and managerid in ('00550000002ahmSAAQ','00538000004lNUdAAM'))";
  
         org.query({ query: q }, function(err, resp){
             

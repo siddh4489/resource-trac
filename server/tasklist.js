@@ -18,7 +18,7 @@ function getTasklists(req, res, next) {
             mode: 'single' // optional, 'single' or 'multi' user mode, multi default
         });
 
-    org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
+    org.authenticate({ username:  req.session.email, password: req.session.password}, function(err, resp) {
         if(!err) {
         console.log(' Logged in user id : '+req.body.uid);   
         var q = "SELECT Id,Name,Task_Description__c,Project_Type__c,No_of_Hours__c,Manager_Name__c FROM Task__c where  createdbyId ='"+req.body.uid+"'";
@@ -54,7 +54,7 @@ function getResourceview(req, res, next) {
             mode: 'single' // optional, 'single' or 'multi' user mode, multi default
         });
 
-    org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
+    org.authenticate({ username:  req.session.email, password:  req.session.password}, function(err, resp) {
         if(!err) {
         console.log(' Logged in user id : '+req.body.uid);   
         var today = new Date();

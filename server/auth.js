@@ -1,7 +1,8 @@
 var bcrypt = require('bcrypt'),
     db = require('./pghelper'),
     config = require('./config'),
-    uuid = require('node-uuid'),
+    uuid = require('node-uuid'),,
+    session = require('express-session'),
     Q = require('q'),
     validator = require('validator'),
     winston = require('winston'),
@@ -166,7 +167,10 @@ function updateVerificatonCodeStatus(req, res, next) {
  */
 function sflogin(req, res, next) {
     var creds = req.body;
-
+    var ses;
+    ses=req.session;	
+    ses.email=req.body.email;
+    ses.password = req.body.password;	
 	
     var nforce = require('nforce');
     //var userName = config.api.userName,
@@ -189,7 +193,6 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
         console.log('nforce connection succeeded...'+org.oauth.access_token);
         console.log('nforce connection succeeded...'+resp);
 	        var userquery = "SELECT Id, Firstname,name,username FROM user Where username ='"+creds.email+"'";
-	        var loggedUser='T';
 		org.query({ query: userquery}, function(err, resp1){
 
 		      if(!err && resp1.records) {

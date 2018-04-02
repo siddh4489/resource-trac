@@ -33,6 +33,7 @@ app.set('port', process.env.PORT || 5000);
 
 app.use(compression());
 app.use(bodyParser.json({limit: '50mb'}));
+app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(bodyParser({
     uploadDir: __dirname + '/uploads',

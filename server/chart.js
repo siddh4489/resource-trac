@@ -4,11 +4,11 @@
     session = require('express-session');
     
      
-function managerList(req, res, next) {
-    console.log('---getManager--->'+req);
-    console.log('---getManager 1--->'+req.body.spassword);
-    console.log('---getManager 2--->'+req.body.suser);
-    console.log('---getManager 3 --->'+JSON.stringify(req.body));
+function chartList(req, res, next) {
+    console.log('---chartList--->'+req);
+    console.log('---chartList 1--->'+req.body.spassword);
+    console.log('---chartList 2--->'+req.body.suser);
+    console.log('---chartList 3 --->'+JSON.stringify(req.body));
     
 
     var oauth;
@@ -51,56 +51,5 @@ function managerList(req, res, next) {
 };
 
 
-function createTask(req, res, next) {
-    
-    console.log('-- task created--Email--'+req.session.email);
-    console.log('--tasl created--Password--'+req.session.password);
-    var taskObj = nforce.createSObject('Task__c');
-            taskObj.set('No_of_Hours__c', req.body.hours);
-            taskObj.set('Project_Type__c', req.body.projecttype);
-            taskObj.set('Task_Description__c', req.body.desc);
-            taskObj.set('Name', req.body.name);
-            taskObj.set('Manager__c', req.body.managerid);
-            taskObj.set('System_Date__c', req.body.sysdate);
-         
-            //org.insert({ sobject: taskObj}, function(err, resp){
-                //if (err) {
-                //    console.log('First Task insert failed: ' + JSON.stringify(err));
-                    org.authenticate({username: req.session.email, password: req.session.password}, function(err) {
-                        if (err) {
-                            console.log('Authentication failed: ' + JSON.stringify(err));
-                            return next(err);
-                        } else {
-                            org.insert({ sobject: taskObj}, function(err, resp) {
-                                if (err) {
-                                    console.log('Second case insert failed: ' + JSON.stringify(err));
-                                    return next(err);
-                                } else {
-                                    console.log('Second case insert worked');
-                                    return res.send('ok');
-                                }
-                            });
-                        }
-                    });
-                //} else {
-                //    console.log('First case insert worked');
-                //    res.send('ok');
-               // }
-           // });
-   
-};
 
-function revokeToken(req, res, next) {
-    org.revokeToken({token: org.oauth.access_token}, function(err) {
-        if (err) {
-            return next(err);
-        } else {
-            res.send('ok');
-        }
-    });
-
-}
-
-exports.createTask = createTask;
-exports.managerList = managerList;
-exports.revokeToken = revokeToken;
+exports.chartList = chartList;

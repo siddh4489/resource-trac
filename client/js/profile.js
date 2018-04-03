@@ -1,4 +1,4 @@
-angular.module('nibs.profile', ['nibs.config', 'nibs.status'])
+angular.module('nibs.profile', ['nibs.config'])
 
     // Routes
     .config(function ($stateProvider) {

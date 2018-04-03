@@ -29,10 +29,7 @@ angular.module('nibs.chart', ['nibs.config'])
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        
        Chart.getChartList($scope.sfu).success(function(datalist) {
-           for(var i =0; i<datalist.length;i++){
-                var r = datalist[i];
-               // data.addRow([r.name, parseInt(r.hr)]); 
-            }   
+           
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
@@ -42,7 +39,7 @@ angular.module('nibs.chart', ['nibs.config'])
             data.addColumn('number','Total Hours')
             for(var i =0; i<datalist.length;i++){
                 var r = datalist[i];
-                data.addRow([r.name, parseInt(r.hr)]); 
+                data.addRow([(r.name).split(" ")[0], parseInt(r.hr)]); 
               }
 
           var view = new google.visualization.DataView(data);

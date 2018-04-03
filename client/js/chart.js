@@ -67,6 +67,9 @@ angular.module('nibs.chart', ['nibs.config'])
           var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
           chart.draw(view, options);
              }  
+        $(window).resize(function(){
+          drawChart();
+        });   
        });
        
 

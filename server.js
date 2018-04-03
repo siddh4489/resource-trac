@@ -34,12 +34,15 @@ app.set('port', process.env.PORT || 5000);
 
 app.use(compression());
 app.use(bodyParser.json({limit: '50mb'}));
-app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true,duration: 30 * 60 * 1000,activeDuration: 5 * 60 * 1000}));
+app.use(session({cookie : {
+        maxAge: 1000* 60 * 60 *24 * 365
+    },secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(bodyParser({
     uploadDir: __dirname + '/uploads',
     keepExtensions: true
 }));
+//,duration: 30 * 60 * 1000,activeDuration: 5 * 60 * 1000
 app.use(methodOverride());
 
 app.use(express.static(path.join(__dirname, './client')));

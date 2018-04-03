@@ -7,7 +7,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
         $stateProvider
 
-           
+            
     
          .state('app.sflogin', {
                 url: "/sflogin",
@@ -22,17 +22,17 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
     
     
 
-            .state('app.logout', {
-                url: "/logout",
-                views: {
-                    'menuContent' :{
-                        templateUrl: "templates/logout.html",
-                        controller: "LogoutCtrl"
-                    }
-                }
+            
+            .state('app.forgotpassword', {
+                  url : "/forgot",
+                  views : {
+                        'menuContent':{
+                            templateUrl:"templates/forgotpassword.html",
+                            controller:"ForgotPasswordCtrl"
+                        }
+                  }
             })
 
-          
     })
 
     /*
@@ -41,8 +41,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
     .factory('Auth', function ($http, $window, $rootScope) {
 
         return {
-            
-            
             sflogin: function (sfuser) {
                 return $http.post($rootScope.server.url + '/sflogin', sfuser)
                     .success(function (data) {
@@ -80,8 +78,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 $window.localStorage.removeItem('token');
                 $window.localStorage.removeItem('sid');
                 return promise;
-            },
-            
+            }
         }
     })
 
@@ -89,7 +86,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
      * Controllers
      */
 
-    
+
 .controller('SfLoginCtrl', function ($scope, $rootScope, $state, $window, $location, $ionicViewService, $ionicPopup, $ionicModal, Auth, OpenFB) {
 
         $ionicModal.fromTemplateUrl('templates/server-url-setting.html', {
@@ -184,8 +181,51 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                  $state.go('app.profile');
               }
            });
-    });
+    })
 
 
-    
+    .controller('SignupCtrl', function ($scope, $state, $ionicPopup, Auth, OpenFB) {
+
+        $scope.user = {};
+
+        $scope.signup = function () {
+            if ($scope.user.password !== $scope.user.password2) {
+                $ionicPopup.alert({title: 'Oops', content: "passwords don't match"});
+                return;
+            }
+            Auth.signup($scope.user)
+                .success(function (data) {
+                    $ionicPopup.alert({title: 'Alert', content: "Signed Up successfully."});
+                    $state.go("app.login");
+                }).error(function(err){
+                    $ionicPopup.alert({title: 'Oops5', content: err});
+                });
+        };
+
+        $scope.facebookLogin = function () {
+
+            OpenFB.login('email, publish_actions').then(
+                function () {
+                    OpenFB.get('/me', {fields: 'id,first_name,last_name,email,picture,birthday,gender'})
+                        .success(function (fbUser) {
+                            Auth.fblogin(fbUser)
+                                .success(function (data) {
+                                    $state.go("app.profile");
+                                    setTimeout(function () {
+                                        $ionicViewService.clearHistory();
+                                    });
+                                })
+                                .error(function (err) {
+                                    $ionicPopup.alert({title: 'Oops', content: err});
+                                })
+                        })
+                        .error(function () {
+                            $ionicPopup.alert({title: 'Oops', content: "The Facebook login failed"});
+                        });
+                },
+                function () {
+                    $ionicPopup.alert({title: 'Oops', content: "The Facebook login failed"});
+                });
+        };
+
     });

@@ -184,7 +184,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                  $state.go('app.profile');
               }
            });
-    })
+    });
 
 
     

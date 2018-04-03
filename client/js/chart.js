@@ -26,17 +26,33 @@ angular.module('nibs.chart', ['nibs.config'])
     //Controllers
     .controller('ChartController', function ($scope, $window, $ionicPopup,Chart,User) {
         
+    
+      }
+      
+    
+       $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+       
+       Chart.getChartList($scope.sfu).success(function(datalist) {
+           
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-      var data = google.visualization.arrayToDataTable([
+     /* var data = google.visualization.arrayToDataTable([
             ["Employee", "Total Hours" ],
             ["Siddhraj", 100],
             ["Shantinath", 110],
             ["Pankaj", 89],
             ["Shubham", 56],
             ["Sweta", 16]
-          ]);
+          ]);*/
+        var data = new google.visualization.DataTable();
+            data.addColumn('string','Employee');
+            data.addColumn('number','Total Hours')
+            for(var i =0; i<datalist;i++){
+                var r = result[i];
+                data.addRow([r.name, parseInt(r.hr)]); 
+              }
+        //alert(JSON.stringify(datalist));
 
           var view = new google.visualization.DataView(data);
           view.setColumns([0, 1,
@@ -59,13 +75,7 @@ angular.module('nibs.chart', ['nibs.config'])
           };
           var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
           chart.draw(view, options);
-      }
-      
-    
-       $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
-       
-       Chart.getChartList($scope.sfu).success(function(datalist) {
-           alert(JSON.stringify(datalist));
+           
        });
        
 

@@ -28,6 +28,8 @@ angular.module('nibs.task', ['nibs.config'])
 
     //Controllers
     .controller('TaskController', function ($scope, $window, $ionicPopup, Task, User) {
+        $rootScope.username = $window.localStorage.getItem('username');
+
         var today = new Date();
         var dd = today.getDate();
         var mm = today.getMonth()+1; //January is 0!

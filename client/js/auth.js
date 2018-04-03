@@ -7,7 +7,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
         $stateProvider
 
-            .state('app.login', {
+           /* .state('app.login', {
                 url: "/login",
                 views: {
                     'menuContent' :{
@@ -17,7 +17,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                         //controller: "SfLoginCtrl"
                     }
                 }
-            })
+            })*/
     
          .state('app.sflogin', {
                 url: "/sflogin",
@@ -42,7 +42,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 }
             })
 
-            .state('app.signup', {
+          /*  .state('app.signup', {
                 url: "/signup",
                 views: {
                     'menuContent' :{
@@ -60,7 +60,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                             controller:"ForgotPasswordCtrl"
                         }
                   }
-            })
+            })*/
 
     })
 

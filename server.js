@@ -10,9 +10,9 @@ var express = require('express'),
 
     // App modules
     offers = require('./server/offers'),
-    products = require('./server/products'),
+    //products = require('./server/products'),
     users = require('./server/users'),
-    cases = require('./server/cases'),
+    //cases = require('./server/cases'),
     //claims = require('./server/claims'),
     //claimlists = require('./server/claimlists'),
     task = require('./server/task'),
@@ -81,8 +81,8 @@ app.get('/getAttachmentDetail/:id',auth.validateToken,offers.getAttachmentDetail
 app.delete('/getAttachmentDetail/:id', auth.validateToken, offers.deleteItem);
 app.post('/couriersignature', auth.validateToken, offers.createSignatureCapture);
 
-app.get('/products', auth.validateToken, products.getAll);
-app.get('/products/:id', auth.validateToken, products.getById);
+//app.get('/products', auth.validateToken, products.getAll);
+//app.get('/products/:id', auth.validateToken, products.getById);
 app.get('/stores', stores.findAll);
 
 app.get('/wallet', auth.validateToken, wallet.getItems);
@@ -101,7 +101,7 @@ app.get('/activities', auth.validateToken, activities.getItems);
 app.post('/activities', auth.validateToken, activities.addItem);
 app.delete('/activities', auth.validateToken, activities.deleteAll);
 
-app.post('/cases', auth.validateToken, cases.createCase);
+//app.post('/cases', auth.validateToken, cases.createCase);
 app.post('/task',  task.createTask);
 app.post('/manager', task.managerList);
 app.post('/chart', chart.chartList);
@@ -111,7 +111,7 @@ app.post('/resourceview', tasklist.getResourceview);
 
 //app.post('/claimlists', auth.validateToken, claimlists.getClaims);
 
-app.get('/nfrevoke', cases.revokeToken);
+//app.get('/nfrevoke', cases.revokeToken);
 app.post('/tasks', auth.validateToken, offers.createTask);
 
 app.post('/s3signing', auth.validateToken, s3signing.sign);

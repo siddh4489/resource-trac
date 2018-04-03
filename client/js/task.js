@@ -27,7 +27,7 @@ angular.module('nibs.task', ['nibs.config'])
     })
 
     //Controllers
-    .controller('TaskController', function ($scope, $window, $ionicPopup, Task, User) {
+    .controller('TaskController', function ($scope,$rootScope, $window, $ionicPopup, Task, User) {
         $rootScope.username = $window.localStorage.getItem('username');
 
         var today = new Date();

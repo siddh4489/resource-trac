@@ -14,9 +14,9 @@ var express = require('express'),
     chart = require('./server/chart'),
     tasklist = require('./server/tasklist'),
     
-    pictures = require('./server/pictures'),
+    //pictures = require('./server/pictures'),
     auth = require('./server/auth'),
-    facebook = require('./server/facebook'),
+    //facebook = require('./server/facebook'),
     s3signing = require('./server/s3signing'),
     mailgap=require('./server/mailgap'),
     app = express();
@@ -47,7 +47,7 @@ app.post('/login', auth.login);
 app.post('/sflogin', auth.sflogin);
 app.post('/logout', auth.validateToken, auth.logout);
 app.post('/signup', auth.signup);
-app.post('/fblogin', facebook.login);
+//app.post('/fblogin', facebook.login);
 app.post('/forgot',auth.forgotpassword);
 app.post('/verify',auth.verify);
 app.post('/updatepassword',auth.updatepassword);
@@ -70,9 +70,9 @@ app.get('/getAttachmentById/:id',auth.validateToken,offers.getAttachmentById);
 app.get('/getAttachmentDetail/:id',auth.validateToken,offers.getAttachmentDetail);
 app.delete('/getAttachmentDetail/:id', auth.validateToken, offers.deleteItem);
 app.post('/couriersignature', auth.validateToken, offers.createSignatureCapture);
-app.get('/pictures', auth.validateToken, pictures.getItems);
-app.post('/pictures', auth.validateToken, pictures.addItem);
-app.delete('/pictures', auth.validateToken, pictures.deleteItems);
+//app.get('/pictures', auth.validateToken, pictures.getItems);
+//app.post('/pictures', auth.validateToken, pictures.addItem);
+//app.delete('/pictures', auth.validateToken, pictures.deleteItems);
 
 
 app.post('/task',  task.createTask);

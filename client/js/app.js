@@ -27,7 +27,7 @@ var app = angular.module('nibs', ['ionic','openfb','nibs.config','nibs.profile',
                console.log(' UserId :--' + $window.localStorage.getItem('userid'));
                $rootScope.username = $window.localStorage.getItem('username');
 
-            if (toState.name !== 'app.login' && toState.name !== 'app.sflogin' && toState.name !== 'app.signup' && toState.name !== 'app.welcome' && toState.name !== 'app.logout' && toState.name !== 'app.chart' && toState.name !=='app.forgotpassword' && !$window.localStorage.getItem('token')) {
+            if (toState.name !== 'app.login' && toState.name !== 'app.help' && toState.name !== 'app.sflogin' && toState.name !== 'app.signup' && toState.name !== 'app.welcome' && toState.name !== 'app.logout' && toState.name !== 'app.chart' && toState.name !=='app.forgotpassword' && !$window.localStorage.getItem('token')) {
                 console.log('Aborting state ' + toState.name + ': No token');
                 $location.path('/app/welcome');
                 event.preventDefault();

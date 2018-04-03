@@ -29,40 +29,19 @@ angular.module('nibs.chart', ['nibs.config'])
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        
        Chart.getChartList($scope.sfu).success(function(datalist) {
-        alert(JSON.stringify(datalist));
-        alert(datalist.length);
            for(var i =0; i<datalist.length;i++){
                 var r = datalist[i];
-                alert(r.name+'-----'+parseInt(r.hr));
                // data.addRow([r.name, parseInt(r.hr)]); 
             }   
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-      /*var data=[];
-      var Header= ['Employee','Total Hours'];
-      data.push(Header);
-         for (var i = 0; i < datalist.length; i++) {
-              var temp=[];
-              temp.push(datalist[i].MonthValue);
-              temp.push(datalist[i].CountValue);
-              data.push(temp);
-          }  */
-        
-     /* var data = google.visualization.arrayToDataTable([
-            ["Employee", "Total Hours" ],
-            ["Siddhraj", 100],
-            ["Shantinath", 110],
-            ["Pankaj", 89],
-            ["Shubham", 56],
-            ["Sweta", 16]
-          ]);*/
+      
         var data = new google.visualization.DataTable();
             data.addColumn('string','Employee');
             data.addColumn('number','Total Hours')
             for(var i =0; i<datalist.length;i++){
                 var r = datalist[i];
-                alert(r.name+'-----'+parseInt(r.hr));
                 data.addRow([r.name, parseInt(r.hr)]); 
               }
 

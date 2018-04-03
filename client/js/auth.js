@@ -19,6 +19,17 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 }
             })
     
+     .state('app.logout', {
+                url: "/logout",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/logout.html",
+                        controller: "LogoutCtrl"
+                    }
+                }
+            })
+
+    
     })
 
     /*

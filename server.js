@@ -16,6 +16,7 @@ var express = require('express'),
     //claims = require('./server/claims'),
     //claimlists = require('./server/claimlists'),
     task = require('./server/task'),
+    chart = require('./server/chart'),
     tasklist = require('./server/tasklist'),
     
     wallet = require('./server/wallet'),
@@ -100,6 +101,7 @@ app.delete('/activities', auth.validateToken, activities.deleteAll);
 app.post('/cases', auth.validateToken, cases.createCase);
 app.post('/task',  task.createTask);
 app.post('/manager', task.managerList);
+app.post('/chart', chart.chartList);
 
 app.post('/tasklist', tasklist.getTasklists);
 app.post('/resourceview', tasklist.getResourceview);

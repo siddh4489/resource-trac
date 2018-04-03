@@ -39,9 +39,14 @@ angular.module('nibs.chart', ['nibs.config'])
           ]);
 
           var view = new google.visualization.DataView(data);
-
+          view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" }
+                       ]);
               var options = {
-                title: "Monthly Total Hour Worked, in hr/mo",
+                title: "March 2018 : Monthly Total Hour Worked, in hr/mo ",
                 hAxis: {
                 //direction:-1,
                 slantedText:true,

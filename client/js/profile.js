@@ -89,11 +89,11 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
 
     //Controllers
     .controller('ProfileCtrl', function ($rootScope, $scope,$window, $state, Taskview, STATUS_LABELS, STATUS_DESCRIPTIONS) {
-            $(".date-picker").datepicker();
-            $(".date-picker").on("change", function () {
+            //$(".date-picker").datepicker();
+            /*$(".date-picker").on("change", function () {
                 var id = $(this).attr("id");
                 alert($("#date-picker-3").val());
-            });
+            });*/
       $rootScope.username = $window.localStorage.getItem('username');
       $scope.taskview = {};
         $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};

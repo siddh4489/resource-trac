@@ -10,23 +10,16 @@ var express = require('express'),
 
     // App modules
     offers = require('./server/offers'),
-    //products = require('./server/products'),
     users = require('./server/users'),
-    //cases = require('./server/cases'),
-    //claims = require('./server/claims'),
-    //claimlists = require('./server/claimlists'),
     task = require('./server/task'),
     chart = require('./server/chart'),
     tasklist = require('./server/tasklist'),
     
-    wallet = require('./server/wallet'),
-    wishlist = require('./server/wishlist'),
     stores = require('./server/stores'),
     pictures = require('./server/pictures'),
     auth = require('./server/auth'),
     facebook = require('./server/facebook'),
     s3signing = require('./server/s3signing'),
-    activities = require('./server/activities'),
     mailgap=require('./server/mailgap'),
     app = express();
 
@@ -81,27 +74,14 @@ app.get('/getAttachmentDetail/:id',auth.validateToken,offers.getAttachmentDetail
 app.delete('/getAttachmentDetail/:id', auth.validateToken, offers.deleteItem);
 app.post('/couriersignature', auth.validateToken, offers.createSignatureCapture);
 
-//app.get('/products', auth.validateToken, products.getAll);
-//app.get('/products/:id', auth.validateToken, products.getById);
+
 app.get('/stores', stores.findAll);
-
-app.get('/wallet', auth.validateToken, wallet.getItems);
-app.post('/wallet', auth.validateToken, wallet.addItem);
-app.delete('/wallet/:id', auth.validateToken, wallet.deleteItem);
-
-app.get('/wishlist', auth.validateToken, wishlist.getItems);
-app.post('/wishlist', auth.validateToken, wishlist.addItem);
-app.delete('/wishlist/:id', auth.validateToken, wishlist.deleteItem);
 
 app.get('/pictures', auth.validateToken, pictures.getItems);
 app.post('/pictures', auth.validateToken, pictures.addItem);
 app.delete('/pictures', auth.validateToken, pictures.deleteItems);
 
-app.get('/activities', auth.validateToken, activities.getItems);
-app.post('/activities', auth.validateToken, activities.addItem);
-app.delete('/activities', auth.validateToken, activities.deleteAll);
 
-//app.post('/cases', auth.validateToken, cases.createCase);
 app.post('/task',  task.createTask);
 app.post('/manager', task.managerList);
 app.post('/chart', chart.chartList);
@@ -109,9 +89,7 @@ app.post('/chart', chart.chartList);
 app.post('/tasklist', tasklist.getTasklists);
 app.post('/resourceview', tasklist.getResourceview);
 
-//app.post('/claimlists', auth.validateToken, claimlists.getClaims);
 
-//app.get('/nfrevoke', cases.revokeToken);
 app.post('/tasks', auth.validateToken, offers.createTask);
 
 app.post('/s3signing', auth.validateToken, s3signing.sign);

@@ -1,4 +1,4 @@
-var app = angular.module('nibs', ['ionic','openfb','naif.base64','nibs.myaccount','nibs.config','nibs.profile', 'nibs.auth', 'nibs.product', 'nibs.store-locator', 'nibs.gallery', 'nibs.settings', 'nibs.case', 'nibs.fileupload','nibs.task','nibs.tasklist'])
+var app = angular.module('nibs', ['ionic','openfb','naif.base64','nibs.myaccount','nibs.config','nibs.profile', 'nibs.auth', 'nibs.product', 'nibs.store-locator', 'nibs.gallery', 'nibs.settings', 'nibs.case', 'nibs.fileupload','nibs.task','nibs.tasklist','nibs.chart'])
 
     .run(function ($window, $location, $rootScope, $state, $ionicPlatform, $http, OpenFB, FB_APP_ID, SERVER_URL) {
         //alert(1);
@@ -25,7 +25,7 @@ var app = angular.module('nibs', ['ionic','openfb','naif.base64','nibs.myaccount
                console.log(' SID Token :--' + $window.localStorage.getItem('sid'));
                console.log(' UserName :--' + $window.localStorage.getItem('username'));
                console.log(' UserId :--' + $window.localStorage.getItem('userid'));
-            if (toState.name !== 'app.login' && toState.name !== 'app.sflogin' && toState.name !== 'app.signup' && toState.name !== 'app.welcome' && toState.name !== 'app.logout' && toState.name !=='app.forgotpassword' && !$window.localStorage.getItem('token')) {
+            if (toState.name !== 'app.login' && toState.name !== 'app.sflogin' && toState.name !== 'app.signup' && toState.name !== 'app.welcome' && toState.name !== 'app.logout' && toState.name !== 'app.chart' && toState.name !=='app.forgotpassword' && !$window.localStorage.getItem('token')) {
                 console.log('Aborting state ' + toState.name + ': No token');
                 $location.path('/app/welcome');
                 event.preventDefault();

@@ -62,11 +62,11 @@ angular.module('nibs.chart', ['nibs.config'])
       }
       
     
-       //$scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+       $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        
-       /*Chart.getChartList($scope.sfu).success(function(datalist) {
-           
-       });*/
+       Chart.getChartList($scope.sfu).success(function(datalist) {
+           alert(JSON.stringify(datalist));
+       });
        
 
       /* $scope.submit = function () {

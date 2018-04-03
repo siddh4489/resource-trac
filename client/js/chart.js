@@ -25,6 +25,7 @@ angular.module('nibs.chart', ['nibs.config'])
 
     //Controllers
     .controller('ChartController', function ($scope, $window, $ionicPopup,Chart,User) {
+       $rootScope.username = $window.localStorage.getItem('username');
 
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        

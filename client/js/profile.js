@@ -1,4 +1,4 @@
-angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status'])
+angular.module('nibs.profile', ['nibs.config', 'nibs.status'])
 
     // Routes
     .config(function ($stateProvider) {

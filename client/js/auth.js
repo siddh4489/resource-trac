@@ -19,20 +19,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 }
             })
     
-    
-    
-
-            
-            .state('app.forgotpassword', {
-                  url : "/forgot",
-                  views : {
-                        'menuContent':{
-                            templateUrl:"templates/forgotpassword.html",
-                            controller:"ForgotPasswordCtrl"
-                        }
-                  }
-            })
-
     })
 
     /*

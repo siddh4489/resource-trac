@@ -24,7 +24,7 @@ angular.module('nibs.tasklist', ['nibs.config'])
     })
 
     //Controllers
-    .controller('TaskListController', function ($scope, $window, $ionicPopup, Tasklist, User) {
+    .controller('TaskListController', function ($scope,$rootScope, $window, $ionicPopup, Tasklist, User) {
         $rootScope.username = $window.localStorage.getItem('username');
 
         $scope.claimlist = {};

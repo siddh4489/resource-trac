@@ -30,8 +30,8 @@ angular.module('nibs.chart', ['nibs.config'])
        
        Chart.getChartList($scope.sfu).success(function(datalist) {
         alert(JSON.stringify(datalist));
-        
-           for(var i =0; i<datalist;i++){
+        alert(datalist.length);
+           for(var i =0; i<datalist.length;i++){
                 var r = datalist[i];
                 alert(r.name+'-----'+parseInt(r.hr));
                // data.addRow([r.name, parseInt(r.hr)]); 
@@ -60,7 +60,7 @@ angular.module('nibs.chart', ['nibs.config'])
         var data = new google.visualization.DataTable();
             data.addColumn('string','Employee');
             data.addColumn('number','Total Hours')
-            for(var i =0; i<datalist;i++){
+            for(var i =0; i<datalist.length;i++){
                 var r = datalist[i];
                 alert(r.name+'-----'+parseInt(r.hr));
                 data.addRow([r.name, parseInt(r.hr)]); 

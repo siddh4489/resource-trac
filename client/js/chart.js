@@ -29,7 +29,13 @@ angular.module('nibs.chart', ['nibs.config'])
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        
        Chart.getChartList($scope.sfu).success(function(datalist) {
-           
+        alert(JSON.stringify(datalist));
+        
+           for(var i =0; i<datalist;i++){
+                var r = datalist[i];
+                alert(r.name+'-----'+parseInt(r.hr));
+               // data.addRow([r.name, parseInt(r.hr)]); 
+            }   
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
@@ -59,7 +65,6 @@ angular.module('nibs.chart', ['nibs.config'])
                 alert(r.name+'-----'+parseInt(r.hr));
                 data.addRow([r.name, parseInt(r.hr)]); 
               }
-        //alert(JSON.stringify(datalist));
 
           var view = new google.visualization.DataView(data);
           view.setColumns([0, 1,

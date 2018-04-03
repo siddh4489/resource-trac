@@ -38,14 +38,14 @@ app.use(function(err, req, res, next) {
     res.send(500, err.message);
 });
 
-app.post('/login', auth.login);
+//app.post('/login', auth.login);
 app.post('/sflogin', auth.sflogin);
 app.post('/logout', auth.validateToken, auth.logout);
-app.post('/signup', auth.signup);
-app.post('/forgot',auth.forgotpassword);
-app.post('/verify',auth.verify);
-app.post('/updatepassword',auth.updatepassword);
-app.post('/updateVerificatonCodeStatus',auth.updateVerificatonCodeStatus);
+//app.post('/signup', auth.signup);
+//app.post('/forgot',auth.forgotpassword);
+//app.post('/verify',auth.verify);
+//app.post('/updatepassword',auth.updatepassword);
+//app.post('/updateVerificatonCodeStatus',auth.updateVerificatonCodeStatus);
 app.post('/task',  task.createTask);
 app.post('/manager', task.managerList);
 app.post('/chart', chart.chartList);

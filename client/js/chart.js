@@ -59,8 +59,8 @@ angular.module('nibs.chart', ['nibs.config'])
                 slantedText:true,
                 slantedTextAngle:90 // here you can even use 180
             },
-            width: 450,
-            height: 400,
+            //width: 450,
+            //height: 400,
             //bar: {groupWidth: "30%"},
             legend: { position: "left" },
           };

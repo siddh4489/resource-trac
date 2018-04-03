@@ -10,12 +10,10 @@ var express = require('express'),
 
     // App modules
     offers = require('./server/offers'),
-    //users = require('./server/users'),
     task = require('./server/task'),
     chart = require('./server/chart'),
     tasklist = require('./server/tasklist'),
     
-    stores = require('./server/stores'),
     pictures = require('./server/pictures'),
     auth = require('./server/auth'),
     facebook = require('./server/facebook'),
@@ -62,8 +60,7 @@ app.post('/rsagreement',auth.validateToken,mailgap.rsagreementdetail);
 
 app.post('/fileupload',auth.validateToken,mailgap.fileupload);
 
-//app.get('/users/me', auth.validateToken, users.getProfile);
-//app.put('/users/me', auth.validateToken, users.updateProfile);
+
 
 app.get('/offers', auth.validateToken, offers.getAll);
 app.get('/offers/:id', offers.getById);
@@ -73,10 +70,6 @@ app.get('/getAttachmentById/:id',auth.validateToken,offers.getAttachmentById);
 app.get('/getAttachmentDetail/:id',auth.validateToken,offers.getAttachmentDetail);
 app.delete('/getAttachmentDetail/:id', auth.validateToken, offers.deleteItem);
 app.post('/couriersignature', auth.validateToken, offers.createSignatureCapture);
-
-
-app.get('/stores', stores.findAll);
-
 app.get('/pictures', auth.validateToken, pictures.getItems);
 app.post('/pictures', auth.validateToken, pictures.addItem);
 app.delete('/pictures', auth.validateToken, pictures.deleteItems);

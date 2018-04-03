@@ -25,11 +25,7 @@ angular.module('nibs.chart', ['nibs.config'])
 
     //Controllers
     .controller('ChartController', function ($scope, $window, $ionicPopup,Chart,User) {
-        
-    
-      
-      
-    
+
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        
        Chart.getChartList($scope.sfu).success(function(datalist) {
@@ -75,7 +71,7 @@ angular.module('nibs.chart', ['nibs.config'])
           };
           var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
           chart.draw(view, options);
-           
+             }  
        });
        
 

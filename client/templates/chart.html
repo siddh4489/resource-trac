@@ -6,13 +6,24 @@
    <ion-content>
     <html>
     <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
           <style type="text/css">
-            </style>
-        
-        </head>
-    <div id="chart_div"></div>
-    </html>
+              .chart {
+                    width: 100%; 
+                    min-height: 450px;
+                    }
+                    .row {
+                    margin:0 !important;
+                    }
+          </style>
+    </head>
+     <div class="row">
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+          <div id="chart_div" class="chart"></div>
+        </div>
+      </div>    
+        </html>
     </ion-content>
 
 </ion-view>

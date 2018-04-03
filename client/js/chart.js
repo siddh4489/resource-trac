@@ -33,6 +33,16 @@ angular.module('nibs.chart', ['nibs.config'])
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
+      /*var data=[];
+      var Header= ['Employee','Total Hours'];
+      data.push(Header);
+         for (var i = 0; i < datalist.length; i++) {
+              var temp=[];
+              temp.push(datalist[i].MonthValue);
+              temp.push(datalist[i].CountValue);
+              data.push(temp);
+          }  */
+        
      /* var data = google.visualization.arrayToDataTable([
             ["Employee", "Total Hours" ],
             ["Siddhraj", 100],
@@ -45,7 +55,8 @@ angular.module('nibs.chart', ['nibs.config'])
             data.addColumn('string','Employee');
             data.addColumn('number','Total Hours')
             for(var i =0; i<datalist;i++){
-                var r = result[i];
+                var r = datalist[i];
+                alert(r.name+'-----'+parseInt(r.hr));
                 data.addRow([r.name, parseInt(r.hr)]); 
               }
         //alert(JSON.stringify(datalist));

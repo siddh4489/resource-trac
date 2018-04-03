@@ -9,14 +9,11 @@ var express = require('express'),
     sqlinit = require('./server/sqlinit'),
 
     // App modules
-    offers = require('./server/offers'),
     task = require('./server/task'),
     chart = require('./server/chart'),
     tasklist = require('./server/tasklist'),
     
-    //pictures = require('./server/pictures'),
     auth = require('./server/auth'),
-    //facebook = require('./server/facebook'),
     s3signing = require('./server/s3signing'),
     mailgap=require('./server/mailgap'),
     app = express();
@@ -52,41 +49,17 @@ app.post('/forgot',auth.forgotpassword);
 app.post('/verify',auth.verify);
 app.post('/updatepassword',auth.updatepassword);
 app.post('/updateVerificatonCodeStatus',auth.updateVerificatonCodeStatus);
-
 app.post('/mailgapp',auth.validateToken,mailgap.mailgapp);
 app.post('/mailgappformdetail',auth.validateToken,mailgap.mailgappformdetail);
 app.post('/rsaddendum',auth.validateToken,mailgap.rsaddendumdetail);
 app.post('/rsagreement',auth.validateToken,mailgap.rsagreementdetail);
-
 app.post('/fileupload',auth.validateToken,mailgap.fileupload);
-
-
-
-app.get('/offers', auth.validateToken, offers.getAll);
-app.get('/offers/:id', offers.getById);
-app.get('/getAllAttachmentsForMail/:id',auth.validateToken,offers.getAllAttachmentsForMail);
-app.get('/getAllAttachmentsForCourier/:id',auth.validateToken,offers.getAllAttachmentsForCourier);
-app.get('/getAttachmentById/:id',auth.validateToken,offers.getAttachmentById);
-app.get('/getAttachmentDetail/:id',auth.validateToken,offers.getAttachmentDetail);
-app.delete('/getAttachmentDetail/:id', auth.validateToken, offers.deleteItem);
-app.post('/couriersignature', auth.validateToken, offers.createSignatureCapture);
-//app.get('/pictures', auth.validateToken, pictures.getItems);
-//app.post('/pictures', auth.validateToken, pictures.addItem);
-//app.delete('/pictures', auth.validateToken, pictures.deleteItems);
-
-
 app.post('/task',  task.createTask);
 app.post('/manager', task.managerList);
 app.post('/chart', chart.chartList);
-
 app.post('/tasklist', tasklist.getTasklists);
 app.post('/resourceview', tasklist.getResourceview);
-
-
-app.post('/tasks', auth.validateToken, offers.createTask);
-
 app.post('/s3signing', auth.validateToken, s3signing.sign);
-
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });

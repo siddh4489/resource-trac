@@ -27,7 +27,7 @@ angular.module('nibs.chart', ['nibs.config'])
     .controller('ChartController', function ($scope, $window, $ionicPopup,Chart,User) {
         
     
-      }
+      
       
     
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};

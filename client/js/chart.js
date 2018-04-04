@@ -92,8 +92,8 @@ angular.module('nibs.chart', ['nibs.config'])
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        
        Chart.getProjectChartList($scope.sfu).success(function(datalist) {
-       
-	       google.charts.load('current', {'packages':['corechart','corechart', 'bar']});
+            var projectType = ["Subscription","Deployment time reduction","Code Optimization","Config Cleanup","Data Purge","Platform Enhancements","UIPM","INC","Self Study"];  
+	    google.charts.load('current', {'packages':['corechart','corechart', 'bar']});
             google.charts.setOnLoadCallback(drawbarChart);
            
            function drawbarChart() {                                                        

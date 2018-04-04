@@ -17,7 +17,7 @@ angular.module('nibs.chart', ['nibs.config'])
                 url: "/projectchart",
                 views: {
                     'menuContent' :{
-                        templateUrl: "templates/chart.html",
+                        templateUrl: "templates/projectchart.html",
                         controller: "ProjectChartController"
                     }
                 }
@@ -170,7 +170,7 @@ angular.module('nibs.chart', ['nibs.config'])
 				}
 			  };
 
-                var chart = new google.visualization.BarChart(document.getElementById('chart_div1'));
+                var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
                 chart.draw(data, options);
               }
 

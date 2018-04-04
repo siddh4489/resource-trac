@@ -148,8 +148,8 @@ angular.module('nibs.chart', ['nibs.config'])
 						 abc+=","+"0";
 						}
 					}
-					alert(""+abc);
-					data.addRow([abc.split(",")[0], parseInt(abc.split(",")[1]), parseInt(abc.split(",")[2]),parseInt(abc.split(",")[3]),parseInt(abc.split(",")[4]),parseInt(abc.split(",")[5]),parseInt(abc.split(",")[6]),parseInt(abc.split(",")[7]),parseInt(abc.split(",")[8]),parseInt(abc.split(",")[9]),parseInt(abc.split(",")[10])]); 
+					//alert(""+abc);
+					data.addRow([abc.split(",")[0], parseInt(abc.split(",")[1]), parseInt(abc.split(",")[2]),parseInt(abc.split(",")[3]),parseInt(abc.split(",")[4]),parseInt(abc.split(",")[5]),parseInt(abc.split(",")[6]),parseInt(abc.split(",")[7]),parseInt(abc.split(",")[8]),parseInt(abc.split(",")[9])]); 
 
 				}
 

@@ -12,6 +12,17 @@ angular.module('nibs.chart', ['nibs.config'])
                     }
                 }
             })
+    
+           .state('app.chart1', {
+                url: "/projectchart",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/chart.html",
+                        controller: "ProjectChartController"
+                    }
+                }
+            })
+
     })
 
     // Services
@@ -19,6 +30,9 @@ angular.module('nibs.chart', ['nibs.config'])
         return {
             getChartList: function(theData) {
                 return $http.post($rootScope.server.url + '/chart', theData);
+            },
+            getProjectChartList: function(theData) {
+                return $http.post($rootScope.server.url + '/projectchart', theData);
             }
         };
     })
@@ -80,3 +94,63 @@ angular.module('nibs.chart', ['nibs.config'])
         };*/
 
     });
+
+  .controller('ProjectChartController', function ($scope,$rootScope, $window, $ionicPopup,Chart,User) {
+       $rootScope.username = $window.localStorage.getItem('username');
+
+       $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+       
+       Chart.getProjectChartList($scope.sfu).success(function(datalist) {
+           
+     alert(JSON.stringify(datalist));      
+    /*google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      
+        var data = new google.visualization.DataTable();
+            data.addColumn('string','Employee');
+            data.addColumn('number','Total Hours')
+            for(var i =0; i<datalist.length;i++){
+                var r = datalist[i];
+                data.addRow([(r.name).split(" ")[0], parseInt(r.hr)]); 
+              }
+
+          var view = new google.visualization.DataView(data);
+          view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" }
+                       ]);
+              var options = {
+                title: "March 2018 : Monthly Total Hour Worked, in hr/mo ",
+                hAxis: {
+                //direction:-1,
+                slantedText:true,
+                slantedTextAngle:90 // here you can even use 180
+            },
+            //width: 450,
+            //height: 400,
+            //bar: {groupWidth: "30%"},
+            legend: { position: "left" },
+          };
+          var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+          chart.draw(view, options);
+             }  
+        $(window).resize(function(){
+          drawChart();
+        });   */
+       });
+       
+
+      /* $scope.submit = function () {
+           Task.create($scope.task).success(function() {
+                     $ionicPopup.alert({title: 'Thank You', content: 'Your Task submitted successfully.'});
+                     $scope.task = {};
+                });
+          
+        };*/
+
+    });
+
+

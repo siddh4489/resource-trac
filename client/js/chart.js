@@ -170,7 +170,7 @@ angular.module('nibs.chart', ['nibs.config'])
 
 			var options = {
 				title: 'March 2018',
-				legend: { position: 'top', maxLines: 4 },
+				legend: { position: 'bottom', maxLines: 4 },
 				isStacked: true,
 				hAxis: {
 				  title: 'Total Hours',
@@ -178,7 +178,9 @@ angular.module('nibs.chart', ['nibs.config'])
 				},
 				vAxis: {
 				  title: 'Employees'
-				}
+				},
+				width: 550,
+            			height: 450,
 			  };
 
                 var chart = new google.visualization.BarChart(document.getElementById('chart_div'));

@@ -154,7 +154,7 @@ angular.module('nibs.chart', ['nibs.config'])
 						}
 					}
 					//alert(""+abc);
-					data.addRow([abc.split(",")[0], parseInt(abc.split(",")[1]), parseInt(abc.split(",")[2]),parseInt(abc.split(",")[3]),parseInt(abc.split(",")[4]),parseInt(abc.split(",")[5]),parseInt(abc.split(",")[6]),parseInt(abc.split(",")[7]),parseInt(abc.split(",")[8]),parseInt(abc.split(",")[9])]); 
+					data.addRow([(abc.split(",")[0]).split(" ")[0], parseInt(abc.split(",")[1]), parseInt(abc.split(",")[2]),parseInt(abc.split(",")[3]),parseInt(abc.split(",")[4]),parseInt(abc.split(",")[5]),parseInt(abc.split(",")[6]),parseInt(abc.split(",")[7]),parseInt(abc.split(",")[8]),parseInt(abc.split(",")[9])]); 
 
 				}
 
@@ -170,7 +170,7 @@ angular.module('nibs.chart', ['nibs.config'])
 
 			var options = {
 				title: 'March 2018',
-				legend: { position: 'bottom', maxLines: 4 },
+				legend: { position: 'top', maxLines: 4 },
 				isStacked: true,
 				hAxis: {
 				  title: 'Total Hours',

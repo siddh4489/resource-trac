@@ -69,8 +69,13 @@ angular.module('nibs.chart', ['nibs.config'])
                 hAxis: {
                 //direction:-1,
                 slantedText:true,
-                slantedTextAngle:90 // here you can even use 180
-            },
+                slantedTextAngle:90,
+	        title: 'Total Hours',
+		minValue: 0,
+            },vAxis: {
+		  title: 'Employees'
+		},
+		      
             width: 500,
             height: 400,
             //bar: {groupWidth: "30%"},
@@ -158,7 +163,7 @@ angular.module('nibs.chart', ['nibs.config'])
 
 
 			var options = {
-				title: 'Monthly Project Wise Total Hours',
+				title: 'March 2018',
 				chartArea: {width: '50%'},
 				isStacked: true,
 				hAxis: {

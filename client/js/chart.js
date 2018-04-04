@@ -179,8 +179,8 @@ angular.module('nibs.chart', ['nibs.config'])
 				vAxis: {
 				  title: 'Employees'
 				},
-				width: 550,
-            			height: 450,
+				width: 500,
+            			height: 400,
 			  };
 
                 var chart = new google.visualization.BarChart(document.getElementById('chart_div'));

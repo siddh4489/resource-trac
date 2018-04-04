@@ -100,3 +100,4 @@ function projectChartList(req, res, next) {
 
 
 exports.chartList = chartList;
+exports.projectChartList = projectChartList;

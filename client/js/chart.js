@@ -91,13 +91,12 @@ angular.module('nibs.chart', ['nibs.config'])
 
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        
-          Chart.getProjectChartList($scope.sfu).success(function(datalist) {
-            var projectType = ["Subscription","Deployment time reduction","Code Optimization","Config Cleanup","Data Purge","Platform Enhancements","UIPM","INC","Self Study"];  
-            google.charts.load('current', {'packages':['corechart','corechart', 'bar']});
+       Chart.getProjectChartList($scope.sfu).success(function(datalist) {
+       
+	       google.charts.load('current', {'packages':['corechart','corechart', 'bar']});
             google.charts.setOnLoadCallback(drawbarChart);
            
-           function drawbarChart() {
-                                                                      
+           function drawbarChart() {                                                        
                                                                       
                 var data = new google.visualization.DataTable();
                 data.addColumn('string','Employees');
@@ -112,74 +111,68 @@ angular.module('nibs.chart', ['nibs.config'])
                 data.addColumn('number','Self Study');
                
                
-var names = [];
-var index;
-for(var i=0;i<datalist.length;i++)
-{
-	index= names.indexOf(datalist[i].name);
-    
-    if(index == -1)
-    {
-     names.push(datalist[i].name);
-    }
-}
-var abc="";
-var hr;
-for(i=0;i<names.length;i++)
-{
-	abc="";
-    abc+=names[i];
-    
-	for(j=0;j<projectType.length;j++)
-	{
-      hr=0;
-	for(k=0;k<datalist.length;k++)
-     {
-           if(names[i]==datalist[k].name && projectType[j] == datalist[k].project_type__c)
-           {
-           console.log(names[i]+"  "+projectType[j]+" "+datalist[k].hr);
-       hr=datalist[k].hr;       
-           }
-        }
-        if(hr!=0)
-        {
-         abc+=","+hr;
-        }
-        else
-        {
-         abc+=","+"0";
-        }
-	}
-    alert(""+abc);
-    
-    data.addRow([abc.split(",")[0], parseInt(abc.split(",")[1]), parseInt(abc.split(",")[2]),parseInt(abc.split(",")[3]),parseInt(abc.split(",")[4]),parseInt(abc.split(",")[5]),parseInt(abc.split(",")[6]),parseInt(abc.split(",")[7]),parseInt(abc.split(",")[8]),parseInt(abc.split(",")[9]),parseInt(abc.split(",")[10])]); 
+				var names = [];
+				var index;
+				for(var i=0;i<datalist.length;i++)
+				{
+					index= names.indexOf(datalist[i].name);
+					
+					if(index == -1)
+					{
+					 names.push(datalist[i].name);
+					}
+				}
+				var abc="";
+				var hr;
+				for(i=0;i<names.length;i++){
+					abc="";
+					abc+=names[i];
+					
+					for(j=0;j<projectType.length;j++)
+					{
+					  hr=0;
+					for(k=0;k<datalist.length;k++)
+					 {
+						   if(names[i]==datalist[k].name && projectType[j] == datalist[k].project_type__c)
+						   {
+						   console.log(names[i]+"  "+projectType[j]+" "+datalist[k].hr);
+					   hr=datalist[k].hr;       
+						   }
+						}
+						if(hr!=0)
+						{
+						 abc+=","+hr;
+						}
+						else
+						{
+						 abc+=","+"0";
+						}
+					}
+					alert(""+abc);
+					data.addRow([abc.split(",")[0], parseInt(abc.split(",")[1]), parseInt(abc.split(",")[2]),parseInt(abc.split(",")[3]),parseInt(abc.split(",")[4]),parseInt(abc.split(",")[5]),parseInt(abc.split(",")[6]),parseInt(abc.split(",")[7]),parseInt(abc.split(",")[8]),parseInt(abc.split(",")[9]),parseInt(abc.split(",")[10])]); 
 
-}
+				}
 
 
                 
 
 
-                var options = {
-                    title: 'Monthly Project Wise Total Hours',
-                    chartArea: {width: '50%'},
-                    isStacked: true,
-                    hAxis: {
-                      title: 'Total Hours',
-                      minValue: 0,
-                    },
-                    vAxis: {
-                      title: 'Employees'
-                    }
-                  };
+			var options = {
+				title: 'Monthly Project Wise Total Hours',
+				chartArea: {width: '50%'},
+				isStacked: true,
+				hAxis: {
+				  title: 'Total Hours',
+				  minValue: 0,
+				},
+				vAxis: {
+				  title: 'Employees'
+				}
+			  };
 
                 var chart = new google.visualization.BarChart(document.getElementById('chart_div1'));
                 chart.draw(data, options);
               }
-
-
-}
-},{escape:false});
 
 
        });

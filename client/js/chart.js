@@ -83,18 +83,18 @@ angular.module('nibs.chart', ['nibs.config'])
           drawChart();
         });   
        });
+      
+    })
+    
+  .controller('ProjectChartController', function ($scope,$rootScope, $window, $ionicPopup,Chart,User) {
+       $rootScope.username = $window.localStorage.getItem('username');
+
+       $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        
-
-      /* $scope.submit = function () {
-           Task.create($scope.task).success(function() {
-                     $ionicPopup.alert({title: 'Thank You', content: 'Your Task submitted successfully.'});
-                     $scope.task = {};
-                });
-          
-        };*/
-
+       Chart.getProjectChartList($scope.sfu).success(function(datalist) {
+            alert(JSON.stringify(datalist));      
+       });
+       
     });
 
-
-
-
+  

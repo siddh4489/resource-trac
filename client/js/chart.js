@@ -159,12 +159,18 @@ angular.module('nibs.chart', ['nibs.config'])
 				}
 
 
-                
+                       var view = new google.visualization.DataView(data);
+			   view.setColumns([0, 1,
+				       { calc: "stringify",
+					 sourceColumn: 1,
+					 type: "string",
+					 role: "annotation" }
+				       ]);
 
 
 			var options = {
 				title: 'March 2018',
-				chartArea: {width: '50%'},
+				legend: { position: 'top', maxLines: 4 },
 				isStacked: true,
 				hAxis: {
 				  title: 'Total Hours',

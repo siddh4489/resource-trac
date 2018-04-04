@@ -49,6 +49,7 @@ app.post('/logout', auth.validateToken, auth.logout);
 app.post('/task',  task.createTask);
 app.post('/manager', task.managerList);
 app.post('/chart', chart.chartList);
+app.post('/projectchart', chart.projectChartList);
 app.post('/tasklist', tasklist.getTasklists);
 app.post('/resourceview', tasklist.getResourceview);
 app.listen(app.get('port'), function () {

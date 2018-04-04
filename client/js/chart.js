@@ -94,17 +94,7 @@ angular.module('nibs.chart', ['nibs.config'])
         };*/
 
     });
-});
 
-  .controller('ProjectChartController', function ($scope,$rootScope, $window, $ionicPopup,Chart,User) {
-       $rootScope.username = $window.localStorage.getItem('username');
 
-       $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
-       
-       Chart.getProjectChartList($scope.sfu).success(function(datalist) {
-            alert(JSON.stringify(datalist));      
-       });
-       
-    });
 
 

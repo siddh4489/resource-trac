@@ -1,5 +1,5 @@
-var db = require('./pghelper'),
-    config = require('./config'),
+ //var db = require('./pghelper'),
+   var config = require('./config'),
     nforce = require('nforce'),
     session = require('express-session');
 

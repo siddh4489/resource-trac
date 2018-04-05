@@ -6,7 +6,7 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     winston = require('winston'),
-    sqlinit = require('./server/sqlinit'),
+    //sqlinit = require('./server/sqlinit'),
 
     // App modules
     task = require('./server/task'),

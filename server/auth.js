@@ -1,5 +1,5 @@
 var bcrypt = require('bcrypt'),
-    db = require('./pghelper'),
+    //db = require('./pghelper'),
     config = require('./config'),
     uuid = require('node-uuid'),
     session = require('express-session'),

@@ -39,6 +39,10 @@ angular.module('nibs.chart', ['nibs.config'])
 
     //Controllers
     .controller('ChartController', function ($scope,$rootScope, $window, $ionicPopup,Chart,User) {
+       $(function () {
+    		$('input.monthpicker').monthpicker({changeYear:true, minDate: "-3 M", maxDate: "+2 Y" });
+	});	
+	
        $rootScope.username = $window.localStorage.getItem('username');
 
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};

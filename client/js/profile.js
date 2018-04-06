@@ -100,17 +100,19 @@ angular.module('nibs.profile', ['nibs.config'])
         $(".date-picker").datepicker();
         $(".date-picker").on("change", function () {
         var id = $(this).attr("id");
-        alert($("#date-picker-3").val());
+        //alert($("#date-picker-3").val());
         });
       $rootScope.username = $window.localStorage.getItem('username');
       $scope.taskview = {};
-        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+      alert($("#date-picker-3").val());
+        $scope.sfu = {'date':$("#date-picker-3").val(),'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
     $scope.view = function () {
-        alert(12);
+    //alert(12);
     Taskview.getResourveView($scope.sfu).success(function(datalist) {
                 
-                  var taskDataList = [];
-                  if(datalist.length>0){
+                   var taskDataList = [];
+                  
+                   if(datalist.length>0){
                       for(i=0;i<datalist.length;i++){
                        var taskData = {};
                         taskData.id = datalist[i].uniqueid__c;
@@ -122,10 +124,11 @@ angular.module('nibs.profile', ['nibs.config'])
                         taskData.hours = 'Hours :'+datalist[i].no_of_hours__c;
                         taskData.name = datalist[i].created_name__c;
                         taskDataList.push(taskData);
-                    }
+                   }
                 
                     console.log('taskDataList---'+taskDataList);
-                      console.log('taskDataList---'+JSON.stringify(taskDataList));
+                    console.log('taskDataList---'+JSON.stringify(taskDataList));
+                    
                     var peopleElement = document.getElementById("people");
                     var orgChart = new getOrgChart(peopleElement, {
                         color:"mediumdarkblue",

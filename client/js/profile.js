@@ -40,6 +40,9 @@ angular.module('nibs.profile', ['nibs.config'])
             getResourveView: function(theTasklst) {
                 return $http.post($rootScope.server.url + '/resourceview/',theTasklst);
             }
+            /*getViewOnSelectedDate: function(theTasklst) {
+                return $http.post($rootScope.server.url + '/resourceview/',theTasklst);
+            }*/
             
             
         };
@@ -102,7 +105,9 @@ angular.module('nibs.profile', ['nibs.config'])
       $rootScope.username = $window.localStorage.getItem('username');
       $scope.taskview = {};
         $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
-            Taskview.getResourveView($scope.sfu).success(function(datalist) {
+    $scope.view = function () {
+        alert(12);
+    Taskview.getResourveView($scope.sfu).success(function(datalist) {
                 
                   var taskDataList = [];
                   if(datalist.length>0){
@@ -134,6 +139,7 @@ angular.module('nibs.profile', ['nibs.config'])
 
                   }
              });
+          }, 
     })
 
     .controller('EditProfileCtrl', function ($scope, $window, $ionicPopup, S3Uploader, User, Preference, Size, Status) {

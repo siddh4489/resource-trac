@@ -97,17 +97,18 @@ angular.module('nibs.profile', ['nibs.config'])
                 var id = $(this).attr("id");
                 alert($("#date-picker-3").val());
             });*/
+    $scope.sfu = {'date':'','suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+
         $(".date-picker").datepicker();
         $(".date-picker").on("change", function () {
-        var id = $(this).attr("id");
         //alert($("#date-picker-3").val());
+        $scope.sfu.date =  mId;
+
         });
       $rootScope.username = $window.localStorage.getItem('username');
       $scope.taskview = {};
-      alert($("#date-picker-3").val());
-        $scope.sfu = {'date':$("#date-picker-3").val(),'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
     $scope.view = function () {
-    //alert(12);
+    alert(JSON.stringify($scope.sfu));
     Taskview.getResourveView($scope.sfu).success(function(datalist) {
                 
                    var taskDataList = [];

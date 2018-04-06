@@ -109,7 +109,6 @@ angular.module('nibs.profile', ['nibs.config'])
     Taskview.getResourveView($scope.sfu).success(function(datalist) {
                 
                    var taskDataList = [];
-                  
                    if(datalist.length>0){
                       for(i=0;i<datalist.length;i++){
                        var taskData = {};
@@ -123,6 +122,7 @@ angular.module('nibs.profile', ['nibs.config'])
                         taskData.name = datalist[i].created_name__c;
                         taskDataList.push(taskData);
                    }
+                  }     
                 
                     console.log('taskDataList---'+taskDataList);
                     console.log('taskDataList---'+JSON.stringify(taskDataList));
@@ -138,7 +138,7 @@ angular.module('nibs.profile', ['nibs.config'])
                         dataSource: taskDataList
                     });
 
-                  }
+                  
              });
           }; 
     })

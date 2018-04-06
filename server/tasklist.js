@@ -46,6 +46,7 @@ function getResourceview(req, res, next) {
     console.log('--3---'+req.session);
     console.log('---33----'+req.session.email);
     console.log('---3---3---'+req.session.password);
+    console.log(' Logged in user date : '+req.body.date);   
 
     var oauth;
      org = nforce.createConnection({
@@ -59,7 +60,6 @@ function getResourceview(req, res, next) {
 
     org.authenticate({ username:  req.session.email, password:  req.session.password}, function(err, resp) {
         if(!err) {
-        console.log(' Logged in user id : '+req.body.uid);   
         var today = new Date();
         var dd = today.getDate();
         var mm = today.getMonth()+1; //January is 0!

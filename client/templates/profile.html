@@ -33,11 +33,15 @@
               
   .column {
     float: left;
-    width: 50%;
+    width: 85%;
     padding: 10px;
-    height: 300px; /* Should be removed. Only for demonstration */
 }
-
+              
+.column1 {
+    float: left;
+    width: 15%;
+    padding: 10px;
+}
 /* Clear floats after the columns */
 .row:after {
     content: "";
@@ -48,7 +52,7 @@
         
         </head>
  <div class="row">
-  <div class="column" style="background-color:#aaa;">
+  <div class="column">
    <div class="date-form" style="margin-top: 22px;">
         <div class="form-horizontal">
             <div class="control-group">
@@ -66,8 +70,8 @@
         </div>
      </div>  
   </div>
-  <div class="column" style="background-color:#bbb;">
-    <button class="button button-stable" ng-click="sflogin()">
+  <div class="column1" >
+    <button class="button button-stable" style="margin-top: 40px;"  ng-click="sflogin()">
                             Go
               </button>
   </div>

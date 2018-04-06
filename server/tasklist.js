@@ -73,7 +73,11 @@ function getResourceview(req, res, next) {
             mm = '0'+mm
         } 
 
-       today = mm + '/' + dd + '/' + yyyy;    
+       today = mm + '/' + dd + '/' + yyyy;  
+         
+       if(req.body.date != ''){
+         today = req.body.date;
+       }
         var q = "SELECT Id,Name,uniqueId__c,Task_Description__c,Project_Type__c,No_of_Hours__c,Manager_Name__c,Manager__c,createdbyid,Created_Name__c,Task_Date__c,System_Date__c  FROM Task__c where System_Date__c = '"+today+"'";
             console.log('----tree vie ----'+q);
             org.query({ query: q }, function(err, resp){

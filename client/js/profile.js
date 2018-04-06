@@ -139,7 +139,7 @@ angular.module('nibs.profile', ['nibs.config'])
 
                   }
              });
-          }, 
+          }; 
     })
 
     .controller('EditProfileCtrl', function ($scope, $window, $ionicPopup, S3Uploader, User, Preference, Size, Status) {

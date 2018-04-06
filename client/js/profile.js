@@ -101,7 +101,10 @@ angular.module('nibs.profile', ['nibs.config'])
 
         $(".date-picker").datepicker();
         $(".date-picker").on("change", function () {
+            alert($("#date-picker-3").val());
             $scope.sfu.date =  $("#date-picker-3").val();
+                alert(JSON.stringify($scope.sfu));
+
         });
       $rootScope.username = $window.localStorage.getItem('username');
       $scope.taskview = {};

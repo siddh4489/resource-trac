@@ -21,15 +21,20 @@
             width: 100%;
             height: 100%;
         }
-      <style>
+      
         .date-form { margin: 10px;margin-top:22px; }
         label.control-label span { cursor: pointer; }
-      </style>
+      
+        .button.button-stable {
+             border-color: #e6b800; !important;
+             background-color: #e6b800; !important;
+             color: white; !important;
+        }
     </style>
         
         </head>
    
-     <div class="date-form">
+     <div class="date-form" style="margin-top: 22px;">
         <div class="form-horizontal">
             <div class="control-group">
                 <label for="date-picker-3" class="control-label">Select Date</label>
@@ -38,6 +43,9 @@
                         <label for="date-picker-3" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
                         </label>
                         <input id="date-picker-3" type="text" class="date-picker form-control" />
+                        <button class="button button-block button-stable" ng-click="sflogin()">
+                            Go
+                        </button>
                     </div>
                 </div>
             </div>

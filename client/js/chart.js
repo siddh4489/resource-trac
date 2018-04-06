@@ -66,6 +66,10 @@ angular.module('nibs.chart', ['nibs.config'])
                        ]);
               var options = {
                 title: "March 2018 ",
+		tooltip: {
+		    isHtml: true,
+		    trigger: 'both'
+		},
                 hAxis: {
                 //direction:-1,
                 slantedText:true,
@@ -172,6 +176,10 @@ angular.module('nibs.chart', ['nibs.config'])
 				title: 'March 2018',
 				legend: { position: 'top', maxLines: 4 },
 				isStacked: true,
+				 tooltip: {
+				    isHtml: true,
+				    trigger: 'both'
+				},
 				hAxis: {
 				  title: 'Total Hours',
 				  minValue: 0,

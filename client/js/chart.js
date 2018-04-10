@@ -39,9 +39,14 @@ angular.module('nibs.chart', ['nibs.config'])
 
     //Controllers
     .controller('ChartController', function ($scope,$rootScope, $window, $ionicPopup,Chart,User) {
-       $(function () {
-    		$('input.monthpicker').monthpicker({changeYear:true, minDate: "-3 M", maxDate: "+2 Y" });
-	});	
+       $(document).ready(function() {
+		$('.Default').MonthPicker();
+
+		// Hide the icon and open the menu when you 
+		// click on the text field.
+		$('#NoIconDemo').MonthPicker({ Button: false });
+
+ 	});	
 	
        $rootScope.username = $window.localStorage.getItem('username');
 

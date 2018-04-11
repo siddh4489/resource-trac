@@ -177,7 +177,9 @@ $scope.view = function () {
        Chart.getProjectChartList($scope.sfu).success(function(datalist) {
 	    google.charts.load('current', {'packages':['corechart','corechart', 'bar']});
             google.charts.setOnLoadCallback(drawbarChart);
-           
+           $(window).on("throttledresize", function (event) {
+    		drawbarChart();
+	});
            function drawbarChart() {                                                        
                                                                       
                 var data = new google.visualization.DataTable();

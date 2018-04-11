@@ -39,7 +39,7 @@ angular.module('nibs.chart', ['nibs.config'])
 
     //Controllers
     .controller('ChartController', function ($scope,$rootScope, $window, $ionicPopup,Chart,User) {
-       
+       $scope.sfu = {'date':'','suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
 	$('.monthYearPicker').datepicker({
 		changeMonth: true,
 		changeYear: true,
@@ -50,15 +50,23 @@ angular.module('nibs.chart', ['nibs.config'])
 		$('.ui-datepicker-calendar').detach();
 		$('.ui-datepicker-close').click(function() {
 		var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-		var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+		var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();	
+		month = month+1;
+		if(month<10) {
+            	   month = '0'+month
+        	} 	
+			
+		$scope.sfu.date =  month+'/'+year;
+	
 		thisCalendar.datepicker('setDate', new Date(year, month, 1));
+			
 		});
 	});
 	
        $rootScope.username = $window.localStorage.getItem('username');
 
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
-       
+       alert(JSON.stringify($scope.sfu));
        Chart.getChartList($scope.sfu).success(function(datalist) {
            
     google.charts.load("current", {packages:['corechart']});

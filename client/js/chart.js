@@ -75,7 +75,16 @@ angular.module('nibs.chart', ['nibs.config'])
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-      alert('--'+$scope.title);
+	  if($scope.title == undefined){
+	     	var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
+		if(mm<10) {
+		    mm = '0'+mm
+		} 
+		  $scope.title = mm+'/'+yyyy;
+	     }
         var data = new google.visualization.DataTable();
             data.addColumn('string','Employee');
             data.addColumn('number','Total Hours')
@@ -92,7 +101,7 @@ angular.module('nibs.chart', ['nibs.config'])
                          role: "annotation" }
                        ]);
               var options = {
-                title: $scope.title,
+                title: 'Report Month :'+$scope.title,
 		tooltip: {
 		    isHtml: true,
 		    trigger: 'both'
@@ -142,7 +151,8 @@ angular.module('nibs.chart', ['nibs.config'])
 		if(amonth<10) {
             	   amonth = '0'+amonth
         	} 	
-			
+		
+		$scope.title =amonth+'/'+year;	
 		$scope.sfu.date =  amonth+'/%%/'+year;
 	
 		thisCalendar.datepicker('setDate', new Date(year, month, 1));
@@ -154,7 +164,16 @@ angular.module('nibs.chart', ['nibs.config'])
 
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
 $scope.view = function () {
-       
+       	if($scope.title == undefined){
+	     	var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
+		if(mm<10) {
+		    mm = '0'+mm
+		} 
+		  $scope.title = mm+'/'+yyyy;
+	     }
        Chart.getProjectChartList($scope.sfu).success(function(datalist) {
 	    google.charts.load('current', {'packages':['corechart','corechart', 'bar']});
             google.charts.setOnLoadCallback(drawbarChart);
@@ -236,7 +255,7 @@ $scope.view = function () {
 				    trigger: 'both'
 				},
 				hAxis: {
-				  title: amonth+'/'+year,
+				  title: 'Report Month :'+$scope.title,
 				  minValue: 0,
 				},
 				vAxis: {

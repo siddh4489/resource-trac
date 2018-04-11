@@ -121,9 +121,34 @@ angular.module('nibs.chart', ['nibs.config'])
     })
     
   .controller('ProjectChartController', function ($scope,$rootScope, $window, $ionicPopup,Chart,User) {
+       $scope.sfu = {'date':'','suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+	$('.monthYearPicker').datepicker({
+		changeMonth: true,
+		changeYear: true,
+		showButtonPanel: true,
+		dateFormat: 'MM yy'
+	}).focus(function() {
+		var thisCalendar = $(this);
+		$('.ui-datepicker-calendar').detach();
+		$('.ui-datepicker-close').click(function() {
+		var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+		var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();	
+		var amonth = parseInt(month)+1;
+		if(amonth<10) {
+            	   amonth = '0'+amonth
+        	} 	
+			
+		$scope.sfu.date =  amonth+'/%%/'+year;
+	
+		thisCalendar.datepicker('setDate', new Date(year, month, 1));
+			
+		});
+	});	
+	
        $rootScope.username = $window.localStorage.getItem('username');
 
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+$scope.view = function () {
        
        Chart.getProjectChartList($scope.sfu).success(function(datalist) {
 	    google.charts.load('current', {'packages':['corechart','corechart', 'bar']});
@@ -222,6 +247,7 @@ angular.module('nibs.chart', ['nibs.config'])
 
 
        });
+	};
        
     });
 

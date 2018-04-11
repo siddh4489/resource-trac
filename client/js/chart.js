@@ -56,7 +56,7 @@ angular.module('nibs.chart', ['nibs.config'])
             	   amonth = '0'+amonth
         	} 	
 			
-		$scope.sfu.date =  amonth+'/'+year;
+		$scope.sfu.date =  amonth+'/%%/'+year;
 	
 		thisCalendar.datepicker('setDate', new Date(year, month, 1));
 			

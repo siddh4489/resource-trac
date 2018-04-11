@@ -101,7 +101,7 @@ angular.module('nibs.chart', ['nibs.config'])
                          role: "annotation" }
                        ]);
               var options = {
-                title: 'Report Month :'+$scope.title,
+                title: 'Report As on : '+$scope.title,
 		tooltip: {
 		    isHtml: true,
 		    trigger: 'both'
@@ -152,7 +152,7 @@ angular.module('nibs.chart', ['nibs.config'])
             	   amonth = '0'+amonth
         	} 	
 		
-		$scope.title =amonth+'/'+year;	
+		$scope.title = amonth+'/'+year;	
 		$scope.sfu.date =  amonth+'/%%/'+year;
 	
 		thisCalendar.datepicker('setDate', new Date(year, month, 1));
@@ -247,7 +247,7 @@ $scope.view = function () {
 
 
 			var options = {
-				title: 'March 2018',
+				title: 'Report As on : '+$scope.title,
 				legend: { position: 'top', maxLines: 4 },
 				isStacked: true,
 				 tooltip: {
@@ -255,7 +255,7 @@ $scope.view = function () {
 				    trigger: 'both'
 				},
 				hAxis: {
-				  title: 'Report Month :'+$scope.title,
+				  title: 'Total Hours',
 				  minValue: 0,
 				},
 				vAxis: {

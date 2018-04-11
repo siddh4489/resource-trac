@@ -67,7 +67,6 @@ angular.module('nibs.chart', ['nibs.config'])
 
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
  $scope.view = function () {
-        alert(JSON.stringify($scope.sfu));
 	Chart.getChartList($scope.sfu).success(function(datalist) {
            
     google.charts.load("current", {packages:['corechart']});

@@ -15,8 +15,46 @@
                     .row {
                     margin:0 !important;
                     }
+              .button.button-stable {
+             border-color: #e6b800; !important;
+             background-color: #e6b800; !important;
+             color: white; !important;
+        }
+              
+  .column {
+    float: left;
+    width: 90%;
+    padding: 10px;
+}
+              
+.column1 {
+    float: left;
+    width: 10%;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
           </style>
     </head>
+        <div class="row"> 
+      <div class="column">
+          <div class="controls">
+                    <div class="input-group">
+          <label for="date-picker-3" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
+           <input name="myDate" class="monthYearPicker form-control" style="border: 1px solid lightgrey;" />
+           </div>
+          </div>     
+
+      </div>
+      <div class="column1" >
+        <button class="button button-stable" style="margin-top: 5px;height: 39px; !important;"  ng-click="view()">
+              Go
+         </button>
+      </div>
+     </div>     
      <div class="row">
         <div class="clearfix"></div>
         <div class="col-md-6">
@@ -25,5 +63,6 @@
       </div>    
         </html>
     </ion-content>
-
+<div data-ng-init="view()">
+  </div>
 </ion-view>

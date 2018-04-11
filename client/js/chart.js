@@ -118,12 +118,12 @@ angular.module('nibs.chart', ['nibs.config'])
 		  title: 'Employees'
 		},
 		      
-            width: 500,
-            height: 400,
+            width: '100%',
+            height: '100%',
             //bar: {groupWidth: "30%"},
             legend: { position: "left" },
           };
-          var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+          var chart = new google.visualization.ColumnChart(document.getElementById("chart"));
           chart.draw(view, options);
              }  
          

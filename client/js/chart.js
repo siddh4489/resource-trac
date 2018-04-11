@@ -39,7 +39,15 @@ angular.module('nibs.chart', ['nibs.config'])
 
     //Controllers
     .controller('ChartController', function ($scope,$rootScope, $window, $ionicPopup,Chart,User) {
-       
+       // Default functionality.
+$(document).ready(function() {
+$('.Default').MonthPicker();
+
+// Hide the icon and open the menu when you 
+// click on the text field.
+$('#NoIconDemo').MonthPicker({ Button: false });
+});
+
 	
        $rootScope.username = $window.localStorage.getItem('username');
 

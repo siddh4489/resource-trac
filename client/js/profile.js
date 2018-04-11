@@ -135,7 +135,7 @@ angular.module('nibs.profile', ['nibs.config'])
                     });
     
                   }else{
-                    document.getElementById("people").innerHTML= "No Records ";
+                    document.getElementById("msg").innerHTML= "No Records ";
                   }
                 
                     console.log('taskDataList---'+taskDataList);

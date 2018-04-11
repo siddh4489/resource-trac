@@ -248,8 +248,8 @@ $scope.view = function () {
 
 			var options = {
 				title: 'Report As on : '+$scope.title,
-				width: 700, height: 500,
-        			chartArea: {width: '80%', height: '75%'},
+				width: '100%',
+            			height: '100%',
 				legend: { position: 'top', maxLines: 4 },
 				isStacked: true,
 				 tooltip: {

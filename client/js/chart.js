@@ -39,15 +39,22 @@ angular.module('nibs.chart', ['nibs.config'])
 
     //Controllers
     .controller('ChartController', function ($scope,$rootScope, $window, $ionicPopup,Chart,User) {
-       // Default functionality.
-$(document).ready(function() {
-$('.Default').MonthPicker();
-
-// Hide the icon and open the menu when you 
-// click on the text field.
-$('#NoIconDemo').MonthPicker({ Button: false });
-});
-
+       // Default functionality.$(function() {
+	    $('.monthYearPicker').datepicker({
+				changeMonth: true,
+				changeYear: true,
+				showButtonPanel: true,
+				dateFormat: 'MM yy'
+			}).focus(function() {
+				var thisCalendar = $(this);
+				$('.ui-datepicker-calendar').detach();
+				$('.ui-datepicker-close').click(function() {
+				var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+				var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+				thisCalendar.datepicker('setDate', new Date(year, month, 1));
+				});
+			});
+		});
 	
        $rootScope.username = $window.localStorage.getItem('username');
 

@@ -247,6 +247,8 @@ $scope.view = function () {
 
 			var options = {
 				title: 'Report As on : '+$scope.title,
+				width: 700, height: 500,
+        			chartArea: {width: '80%', height: '75%'},
 				legend: { position: 'top', maxLines: 4 },
 				isStacked: true,
 				 tooltip: {
@@ -260,8 +262,6 @@ $scope.view = function () {
 				vAxis: {
 				  title: 'Employees'
 				},
-				width: 500,
-            			height: 400,
 			  };
 
                 var chart = new google.visualization.BarChart(document.getElementById('projectchart_div'));

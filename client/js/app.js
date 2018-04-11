@@ -8,7 +8,7 @@ var app = angular.module('nibs', ['ionic','openfb','nibs.config','nibs.profile',
           var lastDigestRun = Date.now();
           var idleCheck = $interval(function() {
           var now = Date.now();            
-             if (now - lastDigestRun > 1*60*1000) {
+             if (now - lastDigestRun > 30*60*1000) {
                $window.localStorage.removeItem('token');   
                $state.go('app.sflogin');    
              }

@@ -51,12 +51,12 @@ angular.module('nibs.chart', ['nibs.config'])
 		$('.ui-datepicker-close').click(function() {
 		var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
 		var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();	
-		month = month+1;
-		if(month<10) {
-            	   month = '0'+month
+		var amonth = month+1;
+		if(amonth<10) {
+            	   amonth = '0'+amonth
         	} 	
 			
-		$scope.sfu.date =  month+'/'+year;
+		$scope.sfu.date =  amonth+'/'+year;
 	
 		thisCalendar.datepicker('setDate', new Date(year, month, 1));
 			
@@ -66,8 +66,9 @@ angular.module('nibs.chart', ['nibs.config'])
        $rootScope.username = $window.localStorage.getItem('username');
 
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
-       alert(JSON.stringify($scope.sfu));
-       Chart.getChartList($scope.sfu).success(function(datalist) {
+ $scope.view = function () {
+        alert(JSON.stringify($scope.sfu));
+	Chart.getChartList($scope.sfu).success(function(datalist) {
            
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
@@ -116,6 +117,7 @@ angular.module('nibs.chart', ['nibs.config'])
           drawChart();
         });   
        });
+};
       
     })
     

@@ -40,8 +40,8 @@ function chartList(req, res, next) {
        if(req.body.date != ''){
          monthYear = req.body.date;
        }
-        var q = "SELECT sum(No_of_Hours__c)hr,CreatedBy.Name FROM Task__c System_Date__c like '%"+monthYear+"%'  GROUP BY CreatedBy.name";
- 
+        var q = "SELECT sum(No_of_Hours__c)hr,CreatedBy.Name FROM Task__c Where System_Date__c like '%"+monthYear+"%'  GROUP BY CreatedBy.name";
+        console.log('--- chart Query--->'+q);
         org.query({ query: q }, function(err, resp){
             
               if(!err && resp.records) {

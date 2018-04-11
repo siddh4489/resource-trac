@@ -36,6 +36,7 @@ function chartList(req, res, next) {
             mm = '0'+mm
         } 
         monthYear = mm +'/%%/'+ yyyy; 
+        console.log('-------monthYear---------'+monthYear);    
             
        if(req.body.date != ''){
          monthYear = req.body.date;

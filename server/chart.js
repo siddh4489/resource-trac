@@ -27,6 +27,19 @@ function chartList(req, res, next) {
     //org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
     org.authenticate({ username: req.session.email, password: req.session.password}, function(err, resp) {    
         if(!err) {
+        var monthYear;    
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+        if(mm<10) {
+            mm = '0'+mm
+        } 
+        monthYear = mm +'/'+ yyyy; 
+            
+       if(req.body.date != ''){
+         monthYear = req.body.date;
+       }
         var q = "SELECT sum(No_of_Hours__c)hr,CreatedBy.Name FROM Task__c GROUP BY CreatedBy.name";
  
         org.query({ query: q }, function(err, resp){

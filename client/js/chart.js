@@ -39,6 +39,8 @@ angular.module('nibs.chart', ['nibs.config'])
 
     //Controllers
     .controller('ChartController', function ($scope,$rootScope, $window, $ionicPopup,Chart,User) {
+	var amonth;
+	var year;
        $scope.sfu = {'date':'','suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
 	$('.monthYearPicker').datepicker({
 		changeMonth: true,
@@ -50,8 +52,8 @@ angular.module('nibs.chart', ['nibs.config'])
 		$('.ui-datepicker-calendar').detach();
 		$('.ui-datepicker-close').click(function() {
 		var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-		var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();	
-		var amonth = parseInt(month)+1;
+	        year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();	
+	        amonth = parseInt(month)+1;
 		if(amonth<10) {
             	   amonth = '0'+amonth
         	} 	
@@ -89,7 +91,7 @@ angular.module('nibs.chart', ['nibs.config'])
                          role: "annotation" }
                        ]);
               var options = {
-                title: "March 2018 ",
+                title: amonth+'/'+year,
 		tooltip: {
 		    isHtml: true,
 		    trigger: 'both'

@@ -51,7 +51,7 @@ angular.module('nibs.chart', ['nibs.config'])
 		$('.ui-datepicker-close').click(function() {
 		var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
 		var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();	
-		var amonth = month+1;
+		var amonth = parseInt(month)+1;
 		if(amonth<10) {
             	   amonth = '0'+amonth
         	} 	

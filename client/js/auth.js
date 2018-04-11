@@ -89,27 +89,22 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
        $(function() {
 
                 if ($window.localStorage.chkbx && $window.localStorage.chkbx != '') {
-                     alert(4);
                     $('#remember_me').attr('checked', 'checked');
                     $('#username').val($window.localStorage.usrname);
                     $('#pass').val($window.localStorage.pass);
                 } else {
-                     alert(5);
                     $('#remember_me').removeAttr('checked');
                     $('#username').val('');
                     $('#pass').val('');
                 }
 
                 $('#remember_me').click(function() {
-                    alert(1);
                     if ($('#remember_me').is(':checked')) {
-                        alert(2);
                         // save username and password
                         $window.localStorage.usrname = $('#username').val();
                         $window.localStorage.pass = $('#pass').val();
                         $window.localStorage.chkbx = $('#remember_me').val();
                     } else {
-                        alert(3);
                         $window.localStorage.usrname = '';
                         $window.localStorage.pass = '';
                         $window.localStorage.chkbx = '';

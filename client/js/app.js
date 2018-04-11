@@ -1,30 +1,35 @@
 var app = angular.module('nibs', ['ionic','openfb','nibs.config','nibs.profile', 'nibs.auth','nibs.task','nibs.tasklist','nibs.chart'])
 
+     .config(function(IdleProvider, KeepaliveProvider) {
+          alert('config');
+          IdleProvider.idle(2*60); // 10 minutes idle
+          IdleProvider.timeout(30); // after 30 seconds idle, time the user out
+          KeepaliveProvider.interval(1*60); // 5 minute keep-alive ping
+      })
+
     .run(function ($window, $location, $rootScope, $state, $ionicPlatform, $http, OpenFB, FB_APP_ID, SERVER_URL) {
-        //alert(1);
-        //alert($window.localStorage.getItem('user'));
-        //var user = JSON.parse($window.localStorage.getItem('user'));
-
-        //$rootScope.user = user;
-
+        
         $rootScope.server = {url: SERVER_URL || location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')};
 
-        // Intialize OpenFB Facebook library
-        OpenFB.init(FB_APP_ID, $window.localStorage);
-
+        
         $ionicPlatform.ready(function() {
             if(window.StatusBar) {
                 StatusBar.styleDefault();
             }
 
         });
+        
+       $rootScope.$on('IdleTimeout', function() {
+        // end their session and redirect to login
+           alert('idel logout');
+            $window.localStorage.removeItem('token');   
+            $state.go('app.sflogin');
+       });
 
         // Re-route to welcome street if we don't have an authenticated token
         $rootScope.$on('$stateChangeStart', function(event, toState) {
                console.log(' Token :--' + $window.localStorage.getItem('token'));
-               console.log(' SID Token :--' + $window.localStorage.getItem('sid'));
                console.log(' UserName :--' + $window.localStorage.getItem('username'));
-               console.log(' UserId :--' + $window.localStorage.getItem('userid'));
                $rootScope.username = $window.localStorage.getItem('username');
 
             if (toState.name !== 'app.sflogin'&& toState.name !== 'app.welcome' && toState.name !== 'app.logout' && toState.name !== 'app.chart1' && toState.name !== 'app.chart' && !$window.localStorage.getItem('token')) {
@@ -34,7 +39,7 @@ var app = angular.module('nibs', ['ionic','openfb','nibs.config','nibs.profile',
             }
         });
 
-        $state.go('app.profile');
+        //$state.go('app.profile');
     })
 
     .config(function ($stateProvider, $urlRouterProvider) {

@@ -1,14 +1,20 @@
 var app = angular.module('nibs', ['ionic','openfb','nibs.config','nibs.profile', 'nibs.auth','nibs.task','nibs.tasklist','nibs.chart'])
 
-     .config(function(IdleProvider, KeepaliveProvider) {
-          alert('config');
-          IdleProvider.idle(2*60); // 10 minutes idle
-          IdleProvider.timeout(30); // after 30 seconds idle, time the user out
-          KeepaliveProvider.interval(1*60); // 5 minute keep-alive ping
-      })
+     
 
-    .run(function ($window, $location, $rootScope, $state, $ionicPlatform, $http, OpenFB, FB_APP_ID, SERVER_URL) {
+    .run(function ($window, $location, $rootScope, $state, $ionicPlatform,$interval, $http, OpenFB, FB_APP_ID, SERVER_URL) {
         
+         
+          var lastDigestRun = Date.now();
+          var idleCheck = $interval(function() {
+          var now = Date.now();            
+             if (now - lastDigestRun > 1*60*1000) {
+               $window.localStorage.removeItem('token');   
+               $state.go('app.sflogin');    
+             }
+          }, 60*1000);
+
+    
         $rootScope.server = {url: SERVER_URL || location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')};
 
         
@@ -19,15 +25,9 @@ var app = angular.module('nibs', ['ionic','openfb','nibs.config','nibs.profile',
 
         });
         
-       $rootScope.$on('IdleTimeout', function() {
-        // end their session and redirect to login
-           alert('idel logout');
-            $window.localStorage.removeItem('token');   
-            $state.go('app.sflogin');
-       });
-
         // Re-route to welcome street if we don't have an authenticated token
         $rootScope.$on('$stateChangeStart', function(event, toState) {
+               lastDigestRun = Date.now();  
                console.log(' Token :--' + $window.localStorage.getItem('token'));
                console.log(' UserName :--' + $window.localStorage.getItem('username'));
                $rootScope.username = $window.localStorage.getItem('username');

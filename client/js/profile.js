@@ -122,12 +122,8 @@ angular.module('nibs.profile', ['nibs.config'])
                         taskData.name = datalist[i].created_name__c;
                         taskDataList.push(taskData);
                    }
-                  }     
-                
-                    console.log('taskDataList---'+taskDataList);
-                    console.log('taskDataList---'+JSON.stringify(taskDataList));
-                    
-                    var peopleElement = document.getElementById("people");
+                       
+                   var peopleElement = document.getElementById("people");
                     var orgChart = new getOrgChart(peopleElement, {
                         color:"mediumdarkblue",
                         enableEdit: false,
@@ -137,7 +133,15 @@ angular.module('nibs.profile', ['nibs.config'])
                         photoFields: ["image"],
                         dataSource: taskDataList
                     });
-
+    
+                  }else{
+                    document.getElementById("people").innerHTML= "No Records ";
+                  }
+                
+                    console.log('taskDataList---'+taskDataList);
+                    console.log('taskDataList---'+JSON.stringify(taskDataList));
+                    
+                    
                   
              });
           }; 

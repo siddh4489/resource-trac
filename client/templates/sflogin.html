@@ -4,13 +4,13 @@
 
         <div class="list list-inset" style="margin-top: 100px;">
 
-            <label class="item item-input">
+            <label class="item">
                 <input type="email" placeholder="Salesforce Username" ng-model="sfuser.email">
             </label>
-            <label class="item item-input">
+            <label class="item">
                 <input type="password" placeholder="Salesforce Password" ng-model="sfuser.password">
             </label>
-            <label class="item item-checkbox">
+            <label class="item">
              <input type="checkbox" value="remember-me" id="remember_me"> Remember me
             </label>
             <button class="button button-block button-stable" ng-click="sflogin()">
@@ -27,6 +27,11 @@
              background-color: #e6b800; !important;
              color: white; !important;
         }
+        label {
+        display: inline-block;
+        margin-bottom: 5px;
+        font-weight: 100; !important;
+    }
     </style>    
 
 </ion-view>

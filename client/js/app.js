@@ -5,14 +5,14 @@ var app = angular.module('nibs', ['ionic','openfb','nibs.config','nibs.profile',
     .run(function ($window, $location, $rootScope, $state, $ionicPlatform,$interval, $http, OpenFB, FB_APP_ID, SERVER_URL) {
         
          
-        /*  var lastDigestRun = Date.now();
+          var lastDigestRun = Date.now();
           var idleCheck = $interval(function() {
           var now = Date.now();            
              if (now - lastDigestRun > 1*60*1000) {
                $window.localStorage.removeItem('token');   
                $state.go('app.sflogin');    
              }
-          }, 60*1000);*/
+          }, 60*1000);
 
     
         $rootScope.server = {url: SERVER_URL || location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')};
@@ -27,7 +27,7 @@ var app = angular.module('nibs', ['ionic','openfb','nibs.config','nibs.profile',
         
         // Re-route to welcome street if we don't have an authenticated token
         $rootScope.$on('$stateChangeStart', function(event, toState) {
-               //lastDigestRun = Date.now();  
+               lastDigestRun = Date.now();  
                console.log(' Token :--' + $window.localStorage.getItem('token'));
                console.log(' UserName :--' + $window.localStorage.getItem('username'));
                $rootScope.username = $window.localStorage.getItem('username');

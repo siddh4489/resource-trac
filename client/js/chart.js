@@ -57,7 +57,8 @@ angular.module('nibs.chart', ['nibs.config'])
 		if(amonth<10) {
             	   amonth = '0'+amonth
         	} 	
-			
+		$scope.title = amonth +'/'+year;
+		alert('--'+$scope.title);	
 		$scope.sfu.date =  amonth+'/%%/'+year;
 	
 		thisCalendar.datepicker('setDate', new Date(year, month, 1));
@@ -74,7 +75,7 @@ angular.module('nibs.chart', ['nibs.config'])
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-      
+      alert('--'+$scope.title);
         var data = new google.visualization.DataTable();
             data.addColumn('string','Employee');
             data.addColumn('number','Total Hours')
@@ -91,7 +92,7 @@ angular.module('nibs.chart', ['nibs.config'])
                          role: "annotation" }
                        ]);
               var options = {
-                title: amonth+'/'+year,
+                title: $scope.title,
 		tooltip: {
 		    isHtml: true,
 		    trigger: 'both'

@@ -103,7 +103,7 @@ angular.module('nibs.chart', ['nibs.config'])
                          role: "annotation" }
                        ]);
               var options = {
-                title: 'Report As on : '+$scope.title,
+                title: 'Report Month : '+$scope.title,
 		tooltip: {
 		    isHtml: true,
 		    trigger: 'both'
@@ -249,7 +249,7 @@ $scope.view = function () {
 
 
 			var options = {
-				title: 'Report As on : '+$scope.title,
+				title: 'Report Month : '+$scope.title,
 				width: '100%',
             			height: '100%',
 				legend: { position: 'top', maxLines: 4 },

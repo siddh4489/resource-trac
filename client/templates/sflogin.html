@@ -11,8 +11,8 @@
                 <input type="password" placeholder="Salesforce Password" ng-model="sfuser.password">
             </label>
             <label class="item">
-             <input type="checkbox" value="remember-me" id="remember_me"> Remember me
-            </label>
+             <!--<input type="checkbox" value="remember-me" id="remember_me"> Remember me
+            </label>-->
             <button class="button button-block button-stable" ng-click="sflogin()">
                 SIGN IN
             </button>
@@ -27,6 +27,11 @@
              background-color: #e6b800; !important;
              color: white; !important;
         }
+        label {
+        display: inline-block;
+        margin-bottom: 5px;
+        font-weight: 400; !important;
+    }
        
     </style>    
 

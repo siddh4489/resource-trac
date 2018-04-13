@@ -138,6 +138,7 @@ angular.module('nibs.profile', ['nibs.config'])
                     
                    function renderNodeEventHandler(sender, args) {
                         var hours = parseInt(args.node.data["hours"]);
+                        alert(hours);
                         var hex;
                            if(hours<2){
                              hex = '#cc3300'

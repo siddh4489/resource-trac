@@ -141,7 +141,7 @@ angular.module('nibs.profile', ['nibs.config'])
                         var hours = parseInt(args.node.data["hours"].split(":")[1]);
                         var hex;
                            if(hours<3){
-                             hex = '#cc3300'
+                             hex = '#b32400'
                             }else if(hours>=3 && hours<6){
                               hex = '#004d99';
                             }else{

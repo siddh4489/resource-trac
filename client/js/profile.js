@@ -138,7 +138,10 @@ angular.module('nibs.profile', ['nibs.config'])
                     
                    function renderNodeEventHandler(sender, args) {
                        alert('---args 1---'+args.node.data["name"]);
-                       alert(JSON.stringify(args)+'---args---');
+                       alert('---args 2---'+args.node.data["taskname"]);
+                       alert('---args 3---'+args.node.data["desc"]);
+                       alert('---args 4---'+args.node.data["project"]);
+
                         var hours = parseInt(args.node.data["hours"]);
                         alert(hours);
                         var hex;

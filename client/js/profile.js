@@ -137,7 +137,7 @@ angular.module('nibs.profile', ['nibs.config'])
                     });
                     
                    function renderNodeEventHandler(sender, args) {
-                        var hours = args.node.data["hours"];
+                        var hours = parseInt(args.node.data["hours"]);
                         var hex;
                            if(hours<2){
                              hex = '#cc3300'
@@ -153,8 +153,6 @@ angular.module('nibs.profile', ['nibs.config'])
                     document.getElementById("people").innerHTML= "<H5 style='text-align:center;'>No Records</H5>";
                   }
                 
-                    console.log('taskDataList---'+taskDataList);
-                    console.log('taskDataList---'+JSON.stringify(taskDataList));
                     
                     
                   

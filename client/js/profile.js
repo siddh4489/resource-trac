@@ -144,7 +144,7 @@ angular.module('nibs.profile', ['nibs.config'])
                            if(hours<2){
                              hex = '#cc3300'
                             }else if(hours>=2 && hours<6){
-                              hex = '#ffcc00';
+                              hex = '#0073e6';
                             }else{
                               hex = '#669900';  
                             }

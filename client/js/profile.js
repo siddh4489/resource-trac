@@ -131,8 +131,23 @@ angular.module('nibs.profile', ['nibs.config'])
                         //siblingSeparation: 20,
                         primaryFields: ["name","taskname","desc","project","hours"],
                         photoFields: ["image"],
-                        dataSource: taskDataList
+                        dataSource: taskDataList,
+                        renderNodeEvent: renderNodeEventHandler
+
                     });
+                    
+                   function renderNodeEventHandler(sender, args) {
+                        var hours = args.node.data["hours"];
+                        var hex;
+                           if(hours<2){
+                             hex = '#cc3300'
+                            }else if(hours>=2 && hours<6){
+                              hex = '#ffcc00';
+                            }else{
+                              hex = '#669900';  
+                            }
+                        args.content[1] = args.content[1].replace("rect", "rect style='fill: " + hex + "; stroke: " + hex + ";'")
+                    }
     
                   }else{
                     document.getElementById("people").innerHTML= "<H5 style='text-align:center;'>No Records</H5>";

@@ -116,18 +116,15 @@ angular.module('nibs.task', ['nibs.config'])
 
       $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword'),'uid':$window.localStorage.getItem('uid')};
       Task.getSkillset($scope.sfu).success(function(datalist) {
-                     alert(JSON.stringify(datalist));
-                     alert(datalist[0].expertise_in_salesforce__c);
-                     //$scope.skill = datalist;
                     $scope.skill.sfdc = datalist[0].expertise_in_salesforce__c;
+                    $scope.skill.other = datalist[0].expertise_in_other_technologies__c ;
        }); 
     
        $rootScope.username = $window.localStorage.getItem('username');
-       $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+       $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword'),'uid':$window.localStorage.getItem('uid')};
        $scope.submit = function () {
            Task.createSkillset($scope.skill).success(function() {
                 $ionicPopup.alert({title: 'Thank You', content: 'Skill Set saved successfully.'});
-                     //$scope.task = {};
             });
         };
     });

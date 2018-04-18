@@ -50,6 +50,51 @@ function managerList(req, res, next) {
      
 };
 
+function getSkillset(req, res, next) {
+    console.log('---getSkillset--->'+req.body.uid);
+    console.log('---getSkillset 1--->'+req.body.spassword);
+    console.log('---getSkillset 2--->'+req.body.suser);
+    console.log('---getSkillset 3 --->'+JSON.stringify(req.body));
+    
+
+    var oauth;
+     org = nforce.createConnection({
+            clientId: config.api.clientId,
+            clientSecret: config.api.clientSecret,
+            redirectUri: config.api.redirectUri,
+            apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
+            environment: 'sandbox',  // optional, salesforce 'sandbox' or 'production', production default
+            mode: 'single' // optional, 'single' or 'multi' user mode, multi default
+        });
+
+    //org.authenticate({ username: userName, password: password}, function(err, resp) {
+    console.log('-- task--Email--'+req.session.email);
+    console.log('--tasl--Password--'+req.session.password);
+    //org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
+    org.authenticate({ username: req.session.email, password: req.session.password}, function(err, resp) {    
+        if(!err) {
+        var q = "Select id,Expertise_in_Salesforce__c,Expertise_in_Other_Technologies__c from SkillSet__c WHERE id ='"+req.body.uid+"'";
+ 
+        org.query({ query: q }, function(err, resp){
+            
+              if(!err && resp.records) {
+                 console.log('---getSkillset List--->'+resp.records);
+                 res.send(resp.records);
+              }else{
+                 res.send('No record Available');
+              }
+        });
+
+
+        } else {
+            console.log('nforce connection failed: ' + err.message);
+            oauth = resp;
+        }
+    });
+       
+        
+     
+};
 
 function createTask(req, res, next) {
     

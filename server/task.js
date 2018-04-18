@@ -151,7 +151,7 @@ function createSkillset(req, res, next) {
                                 var q = "Select id,Expertise_in_Salesforce__c,Expertise_in_Other_Technologies__c from SkillSet__c WHERE createdbyId ='"+req.session.uid+"'";
                                 org.query({ query: q }, function(err, resp){
             
-                                      if(!err && resp.records) {
+                                      if(!err && resp.records.length>0) {
                                            console.log('Query Record: ' + JSON.stringify(resp.records));
                                            var skillset = resp.records[0];
                                             skillset.set('Expertise_in_Salesforce__c', req.body.sfdc);

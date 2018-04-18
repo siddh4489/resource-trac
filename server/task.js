@@ -90,6 +90,33 @@ function createTask(req, res, next) {
    
 };
 
+function createSkillset(req, res, next) {
+    
+    console.log('-- skillset created--Email--'+req.session.email);
+    console.log('-- skillset created--Password--'+req.session.password);
+    var skillObj = nforce.createSObject('SkillSet__c');
+        skillObj.set('Expertise_in_Salesforce__c', req.body.sfdc);
+        skillObj.set('Expertise_in_Other_Technologies__c', req.body.other);
+                    org.authenticate({username: req.session.email, password: req.session.password}, function(err) {
+                        if (err) {
+                            console.log('Authentication failed: ' + JSON.stringify(err));
+                            return next(err);
+                        } else {
+                            org.insert({ sobject: skillObj}, function(err, resp) {
+                                if (err) {
+                                    console.log('Second case insert failed: ' + JSON.stringify(err));
+                                    return next(err);
+                                } else {
+                                    console.log('Second case insert worked');
+                                    return res.send('ok');
+                                }
+                            });
+                        }
+                    });
+};
+
+
+
 function revokeToken(req, res, next) {
     org.revokeToken({token: org.oauth.access_token}, function(err) {
         if (err) {

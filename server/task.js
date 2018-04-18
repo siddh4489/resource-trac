@@ -73,7 +73,7 @@ function getSkillset(req, res, next) {
     //org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
     org.authenticate({ username: req.session.email, password: req.session.password}, function(err, resp) {    
         if(!err) {
-        var q = "Select id,Expertise_in_Salesforce__c,Expertise_in_Other_Technologies__c from SkillSet__c WHERE id ='"+req.body.uid+"'";
+        var q = "Select id,Expertise_in_Salesforce__c,Expertise_in_Other_Technologies__c from SkillSet__c WHERE createdbyId ='"+req.body.uid+"'";
  
         org.query({ query: q }, function(err, resp){
             

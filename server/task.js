@@ -128,6 +128,7 @@ function revokeToken(req, res, next) {
 
 }
 
+exports.createSkillset = createSkillset;
 exports.createTask = createTask;
 exports.managerList = managerList;
 exports.revokeToken = revokeToken;

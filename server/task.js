@@ -157,7 +157,9 @@ function createSkillset(req, res, next) {
                                             skillset.set('Expertise_in_Salesforce__c', req.body.sfdc);
                                             skillset.set('Expertise_in_Other_Technologies__c',req.body.other);
                                             org.update({ sobject: skillset}, function(err, resp){
-                                              if(!err) console.log('It worked!');
+                                              if(!err){
+                                                 return res.send('ok');
+                                              }
                                             });
                                           
                                       }else{

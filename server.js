@@ -43,6 +43,7 @@ app.post('/sflogin', auth.sflogin);
 app.post('/logout', auth.validateToken, auth.logout);
 app.post('/task',  task.createTask);
 app.post('/skillset', task.createSkillset);
+app.post('/getskillset', task.getSkillset);
 app.post('/manager', task.managerList);
 app.post('/chart', chart.chartList);
 app.post('/projectchart', chart.projectChartList);

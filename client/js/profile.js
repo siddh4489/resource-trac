@@ -97,7 +97,7 @@ angular.module('nibs.profile', ['nibs.config'])
                 var id = $(this).attr("id");
                 alert($("#date-picker-3").val());
             });*/
-    $scope.sfu = {'date':'','suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+    $scope.sfu = {'date':'','suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword'),'uid':$window.localStorage.getItem('uid')};
 
         $(".date-picker").datepicker();
         $(".date-picker").on("change", function () {

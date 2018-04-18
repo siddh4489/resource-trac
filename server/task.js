@@ -74,7 +74,6 @@ function getSkillset(req, res, next) {
     org.authenticate({ username: req.session.email, password: req.session.password}, function(err, resp) {    
         if(!err) {
         var q = "Select id,Expertise_in_Salesforce__c,Expertise_in_Other_Technologies__c from SkillSet__c WHERE createdbyId ='"+req.body.uid+"'";
- 
         org.query({ query: q }, function(err, resp){
             
               if(!err && resp.records) {
@@ -147,15 +146,34 @@ function createSkillset(req, res, next) {
                             console.log('Authentication failed: ' + JSON.stringify(err));
                             return next(err);
                         } else {
-                            org.insert({ sobject: skillObj}, function(err, resp) {
-                                if (err) {
-                                    console.log('Second case insert failed: ' + JSON.stringify(err));
-                                    return next(err);
-                                } else {
-                                    console.log('Second case insert worked');
-                                    return res.send('ok');
-                                }
-                            });
+
+                                var q = "Select id,Expertise_in_Salesforce__c,Expertise_in_Other_Technologies__c from SkillSet__c WHERE createdbyId ='"+req.session.uid+"'";
+                                org.query({ query: q }, function(err, resp){
+            
+                                      if(!err && resp.records) {
+                                         
+                                           var skillset = resp.records[0];
+                                            skillset.set('Expertise_in_Salesforce__c', req.body.sfdc);
+                                            skillset.set('Expertise_in_Other_Technologies__c',req.body.other);
+                                            org.update({ sobject: skillset}, function(err, resp){
+                                              if(!err) console.log('It worked!');
+                                            });
+                                          
+                                      }else{
+                                          org.insert({ sobject: skillObj}, function(err, resp) {
+                                                if (err) {
+                                                    console.log('Second case insert failed: ' + JSON.stringify(err));
+                                                    return next(err);
+                                                } else {
+                                                    console.log('Second case insert worked');
+                                                    return res.send('ok');
+                                                }
+                                            });
+                                      }
+                            
+                                                        
+                            
+                            
                         }
                     });
 };

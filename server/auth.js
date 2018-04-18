@@ -197,6 +197,9 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
 		org.query({ query: userquery}, function(err, resp1){
 
 		      if(!err && resp1.records) {
+			      alert(JSON.stringify(resp1.records));
+			      alert(JSON.stringify(resp1.records[0]));
+			      alert(JSON.stringify(resp1.records[0].id));
 			      ses.uid = resp1.records[0].id;
 			      return res.send({'email':ses.email,'status':'1','token':org.oauth.access_token,'runninguser':resp1.records,'sfuser':creds.email,'sfpassword':creds.password});
 		      }else{

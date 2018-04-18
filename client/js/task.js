@@ -117,7 +117,9 @@ angular.module('nibs.task', ['nibs.config'])
       $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword'),'uid':$window.localStorage.getItem('uid')};
       Task.getSkillset($scope.sfu).success(function(datalist) {
                      alert(JSON.stringify(datalist));
-                     $scope.skill = datalist;
+                     alert(datalist[0].expertise_in_salesforce__c);
+                     //$scope.skill = datalist;
+                    $scope.skill.sfdc = datalist[0].expertise_in_salesforce__c;
        }); 
     
        $rootScope.username = $window.localStorage.getItem('username');

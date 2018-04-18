@@ -12,6 +12,18 @@ angular.module('nibs.task', ['nibs.config'])
                     }
                 }
             })
+    
+    .state('app.skillset', {
+                url: "/skillset",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/skillset.html",
+                        controller: "SkillSetController"
+                    }
+                }
+            })
+    
+    
     })
 
     // Services
@@ -22,7 +34,10 @@ angular.module('nibs.task', ['nibs.config'])
             },
             getManager: function(theManager) {
                 return $http.post($rootScope.server.url + '/manager', theManager);
-            }
+            },
+            createSkillset: function(theSkillset) {
+                return $http.post($rootScope.server.url + '/skillset/', theSkillset);
+            },
         };
     })
 
@@ -90,4 +105,16 @@ angular.module('nibs.task', ['nibs.config'])
           
         };
 
+    })
+
+.controller('SkillSetController', function ($scope,$rootScope, $window, $ionicPopup, Task, User) {
+       $rootScope.username = $window.localStorage.getItem('username');
+       $scope.skill = {};
+       $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+       $scope.submit = function () {
+           Task.createSkillset($scope.skill).success(function() {
+                $ionicPopup.alert({title: 'Thank You', content: 'Skill Set saved successfully.'});
+                     //$scope.task = {};
+            });
+        };
     });

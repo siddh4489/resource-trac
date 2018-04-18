@@ -6,23 +6,21 @@
 
     <ion-content has-header="true" padding="true">
         <div class="list list-inset">
-
             <fieldset>
-		    <legend class="item item-input">Skill Sets</div></legend>
-                   <div class=list>
-                    <label class="item item-input">
-                        <textarea  placeholder="Skill Sets in Salesforce" ng-model="skill.sfdc">
-                    </label>
-                    
+		<legend class="item item-input">Skill Sets</div></legend>
+                <div class=list>
                     <div class="item item-body">
-                        <textarea placeholder="Skill Set in Other Technologies" rows="5" ng-model="skill.other"></textarea>
-	            </div>
-      </fieldset>
-
-        </div>
-      <button class="button button-block button-light" ng-click="submit()">
+			<textarea placeholder="Skill Sets in Salesforce" rows="7" ng-model="skill.sfdc"></textarea>
+		    </div>
+		    <div class="item item-body">
+			<textarea placeholder="Skill Set in Other Technologies" rows="7" ng-model="skill.other"></textarea>
+		    </div>
+		</div>	    
+      	    </fieldset>
+            <button class="button button-block button-light" ng-click="submit()">
                 Save
-        </button>
+            </button>
+       </div>	
     </ion-content>
 <style>
        .button.button-light {

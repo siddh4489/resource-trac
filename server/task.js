@@ -170,10 +170,7 @@ function createSkillset(req, res, next) {
                                                 }
                                             });
                                       }
-                            
-                                                        
-                            
-                            
+                                });
                         }
                     });
 };

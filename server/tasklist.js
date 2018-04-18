@@ -53,6 +53,7 @@ function getResourceview(req, res, next) {
     ses.password = req.session.password;
     ses.uid = req.body.uid;
  
+    console.log(' user id '+ses.uid); 
     var oauth;
      org = nforce.createConnection({
             clientId: config.api.clientId,

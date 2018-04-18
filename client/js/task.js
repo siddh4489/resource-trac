@@ -35,6 +35,9 @@ angular.module('nibs.task', ['nibs.config'])
             getManager: function(theManager) {
                 return $http.post($rootScope.server.url + '/manager', theManager);
             },
+            getSkillset: function(theGetSkillSet) {
+                return $http.post($rootScope.server.url + '/getskillset', theGetSkillSet);
+            },
             createSkillset: function(theSkillset) {
                 return $http.post($rootScope.server.url + '/skillset/', theSkillset);
             },
@@ -108,8 +111,16 @@ angular.module('nibs.task', ['nibs.config'])
     })
 
 .controller('SkillSetController', function ($scope,$rootScope, $window, $ionicPopup, Task, User) {
+    
+      $scope.skill = {};
+
+      $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword'),'uid':$window.localStorage.getItem('uid')};
+      Task.getSkillset($scope.sfu).success(function(datalist) {
+                     alert(JSON.stringify(datalist));
+                     $scope.skill = datalist;
+       }); 
+    
        $rootScope.username = $window.localStorage.getItem('username');
-       $scope.skill = {};
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        $scope.submit = function () {
            Task.createSkillset($scope.skill).success(function() {

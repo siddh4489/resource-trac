@@ -173,6 +173,7 @@ function revokeToken(req, res, next) {
 
 }
 
+exports.getSkillset = getSkillset;
 exports.createSkillset = createSkillset;
 exports.createTask = createTask;
 exports.managerList = managerList;

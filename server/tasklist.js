@@ -47,7 +47,12 @@ function getResourceview(req, res, next) {
     console.log('---33----'+req.session.email);
     console.log('---3---3---'+req.session.password);
     console.log(' Logged in user date : '+req.body.date);   
-
+    var ses;
+    ses=req.session;	
+    ses.email=req.session.email;
+    ses.password = req.session.password;
+    ses.uid = req.body.uid;
+ 
     var oauth;
      org = nforce.createConnection({
             clientId: config.api.clientId,

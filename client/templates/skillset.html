@@ -8,32 +8,15 @@
         <div class="list list-inset">
 
             <fieldset>
-		    <legend class="item item-input">Task Form Details <div style="float:right;">Date : <span id="date"></span></div></legend>
+		    <legend class="item item-input">Skill Sets</div></legend>
                    <div class=list>
                     <label class="item item-input">
-                        <input type="text" placeholder="Task Name" ng-model="task.name">
+                        <textarea  placeholder="Skill Sets in Salesforce" ng-model="skill.sfdc">
                     </label>
                     
                     <div class="item item-body">
-                        <textarea placeholder="Task Description" rows="5" ng-model="task.desc"></textarea>
-                    </div>
-                    <label class="item item-input">
-                        <input type="number" placeholder="No of Hours" ng-model="task.hours">
-                    </label>
-                    <label class="item">
-                        <!--<input type="text" placeholder="Project Type" ng-model="claim.claimant">-->
-			     <div class="dx-field">
-		                     <div ><div id="project"></div></div>
-	                    </div>
-                    </label>
-                    <label class="item">
-                            <div class="dx-field">
-		                     <div ><div id="manager"></div></div>
-	                    </div>
-                    </label>
-		       <input type="hidden" id="managerid" name="managerid" ng-model="task.managerid">
-		       <input type="hidden" id="projecttype" name="projecttype" ng-model="task.projecttype">   
-	   
+                        <textarea placeholder="Skill Set in Other Technologies" rows="5" ng-model="skill.other"></textarea>
+	            </div>
       </fieldset>
 
         </div>

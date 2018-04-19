@@ -10,21 +10,21 @@
                         <h2>Nothing To Show.</h2>
                     </div>
                </div>
-                <div ng-if="claimlist.length>0">
+                <div ng-if="tasklist.length>0">
                     <div ng-repeat="task in tasklist" class="list card"> 
                        <div class="item item-divider">
                         Task Name : {{task.name}}
                       </div>
-                       <a class="item" href="#">
+                       <a class="item item-text-wrap" href="#">
                         <b>Task Description</b> : {{task.task_description__c}}
                       </a>
-                       <a class="item" href="#">
+                       <a class="item item-text-wrap" href="#">
                         <b>Project Type</b> : {{task.project_type__c}}
                       </a>
-                       <a class="item" href="#">
+                       <a class="item item-text-wrap" href="#">
                         <b>Taken Hours</b> : {{task.no_of_hours__c}}
                       </a>
-                        <a class="item" href="#">
+                        <a class="item item-text-wrap" href="#">
                         <b>Manager / Assignee</b> : {{task.manager_name__c}}
                       </a>
                     </div>

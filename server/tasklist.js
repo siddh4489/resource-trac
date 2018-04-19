@@ -55,7 +55,7 @@ function getSkillsetlists(req, res, next) {
     org.authenticate({ username:  req.session.email, password: req.session.password}, function(err, resp) {
         if(!err) {
         console.log(' Logged in user id : '+req.body.uid);   
-        var q = "Select id,Expertise_in_Salesforce__c,Expertise_in_Other_Technologies__c,createdby.Name from SkillSet__c where createdbyId in (SELECT Id FROM User where  id = '00550000002ahmSAAQ'  or (managerid != '' and IsActive = true and managerid in ('00550000002ahmSAAQ','00538000004lNUdAAM')))";
+        var q = "Select id,Expertise_in_Salesforce__c,Expertise_in_Other_Technologies__c,Dev_Name__c from SkillSet__c where createdbyId in (SELECT Id FROM User where  id = '00550000002ahmSAAQ'  or (managerid != '' and IsActive = true and managerid in ('00550000002ahmSAAQ','00538000004lNUdAAM')))";
         console.log('----q---'+q);
             org.query({ query: q }, function(err, resp){
               if(!err && resp.records) {

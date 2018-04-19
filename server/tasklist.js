@@ -40,6 +40,40 @@ function getTasklists(req, res, next) {
      
 };
 
+function getSkillsetlists(req, res, next) {
+    
+    var oauth;
+     org = nforce.createConnection({
+            clientId: config.api.clientId,
+            clientSecret: config.api.clientSecret,
+            redirectUri: config.api.redirectUri,
+            apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
+            environment: 'sandbox',  // optional, salesforce 'sandbox' or 'production', production default
+            mode: 'single' // optional, 'single' or 'multi' user mode, multi default
+        });
+
+    org.authenticate({ username:  req.session.email, password: req.session.password}, function(err, resp) {
+        if(!err) {
+        console.log(' Logged in user id : '+req.body.uid);   
+        var q = "Select id,Expertise_in_Salesforce__c,Expertise_in_Other_Technologies__c,createdby.Name from SkillSet__c where createdbyId in (SELECT Id FROM User where  id = '00550000002ahmSAAQ'  or (managerid != '' and IsActive = true and managerid in ('00550000002ahmSAAQ','00538000004lNUdAAM')))";
+        console.log('----q---'+q);
+            org.query({ query: q }, function(err, resp){
+              if(!err && resp.records) {
+                 console.log(' resp.records in user id : '+resp.records); 
+                 res.send(resp.records);
+              }else{
+                  console.log(' resp. no records: ');
+                 res.send('No record Available');
+              }
+        });
+        } else {
+            console.log('nforce connection failed: ' + err.message);
+            oauth = resp;
+        }
+    });
+     
+};
+
 
 function getResourceview(req, res, next) {
     
@@ -117,6 +151,7 @@ function revokeToken(req, res, next) {
 
 }
 
+exports.getSkillsetlists = getSkillsetlists;
 exports.getResourceview = getResourceview;
 exports.getTasklists = getTasklists;
 exports.revokeToken = revokeToken;

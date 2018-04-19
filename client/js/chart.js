@@ -112,10 +112,10 @@ angular.module('nibs.chart', ['nibs.config'])
                 //direction:-1,
                 slantedText:true,
                 slantedTextAngle:90,
-	        title: 'Total Hours',
+	        title: 'Employees',
 		minValue: 0,
             },vAxis: {
-		  title: 'Employees'
+		  title: 'Total Hours'
 		},
 		      
             width: '100%',

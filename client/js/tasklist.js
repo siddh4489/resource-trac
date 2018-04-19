@@ -53,6 +53,7 @@ angular.module('nibs.tasklist', ['nibs.config'])
         $scope.skillsetlist = {};
         $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword'),'uid':$window.localStorage.getItem('uid')};
             Tasklist.getSkillsetList($scope.sfu).success(function(datalist) {
+                     alert(JSON.stringify(datalist));
                      $scope.skillsetlist = datalist;
              });
   });

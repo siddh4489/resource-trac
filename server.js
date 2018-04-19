@@ -48,6 +48,7 @@ app.post('/manager', task.managerList);
 app.post('/chart', chart.chartList);
 app.post('/projectchart', chart.projectChartList);
 app.post('/tasklist', tasklist.getTasklists);
+app.post('/skillsetlist', tasklist.getSkillsetlists);
 app.post('/resourceview', tasklist.getResourceview);
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));

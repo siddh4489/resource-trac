@@ -1,5 +1,21 @@
 <ion-side-menus>
-
+    <style>
+        .column {
+            float: left;
+            width: 50%;
+        }
+              
+        .column1 {
+            float: left;
+            width: 50%;
+        }
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>   
     <ion-pane ion-side-menu-content drag-content="false">
         <ion-nav-bar class="bar bar-status{{user.status || 1}} bar-header nav-title-slide-ios7">
             <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i></ion-nav-back-button>
@@ -10,9 +26,17 @@
     <ion-side-menu side="left" style="padding:12px;">
 
         <ion-content>
-
-            <img src="/img/profile.png" alt="Avatar" style="width:200px">
-            <h1>{{username}}</h1>  
+            <div class="row"> 
+                <div class="column">
+                    <img src="/img/profile.png" alt="Avatar" style="width:100px">    
+                </div>
+                <div class="column">
+                    <h1>{{username}}</h1>
+                </div>
+            </div>    
+ 
+            
+              
             <ion-list class="top-list">
                 <ion-item nav-clear menu-close ui-sref="app.profile" class="item-icon-left">
                     <!--<i class="icon ion-arrow-graph-up-right"></i>-->

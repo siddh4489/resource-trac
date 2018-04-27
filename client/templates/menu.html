@@ -11,7 +11,8 @@
 
         <ion-content>
 
-            <h1>Welcome, {{username}}</h1>  
+            <img src="img_avatar.png" alt="Avatar" style="width:200px">
+            <h1>{{username}}</h1>  
             <ion-list class="top-list">
                 <ion-item nav-clear menu-close ui-sref="app.profile" class="item-icon-left">
                     <!--<i class="icon ion-arrow-graph-up-right"></i>-->
@@ -69,8 +70,13 @@
         
          
         </ion-content>
+            <style>
+            img {
+                border-radius: 50%;
+            }
 
-    </ion-side-menu>
+            </style>    
+        </ion-side-menu>
 
 </ion-side-menus>
 

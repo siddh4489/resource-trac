@@ -101,7 +101,7 @@ angular.module('nibs.profile', ['nibs.config'])
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $('.profile-pic').attr('src', e.target.result);
+                $('.profile-pic1').attr('src', e.target.result);
                 
             }
     

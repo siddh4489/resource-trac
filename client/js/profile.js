@@ -96,7 +96,6 @@ angular.module('nibs.profile', ['nibs.config'])
     
     $(document).ready(function() {
 
-    alert(1);
     var readURL = function(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -112,12 +111,10 @@ angular.module('nibs.profile', ['nibs.config'])
     
 
     $(".file-upload").on('change', function(){
-        alert(3);
         readURL(this);
     });
     
     $(".upload-button").on('click', function() {
-        alert(2);
        $(".file-upload").click();
     });
 });

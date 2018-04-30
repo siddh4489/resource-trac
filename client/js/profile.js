@@ -93,11 +93,35 @@ angular.module('nibs.profile', ['nibs.config'])
     //Controllers
     .controller('ProfileCtrl', function ($rootScope, $scope,$window, $state, Taskview, STATUS_LABELS, STATUS_DESCRIPTIONS) {
     
-            //$(".date-picker").datepicker();
-            /*$(".date-picker").on("change", function () {
-                var id = $(this).attr("id");
-                alert($("#date-picker-3").val());
-            });*/
+    
+    $(document).ready(function() {
+
+    alert(1);
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+                
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+
+    $(".file-upload").on('change', function(){
+        alert(3);
+        readURL(this);
+    });
+    
+    $(".upload-button").on('click', function() {
+        alert(2);
+       $(".file-upload").click();
+    });
+});
+    
     $scope.sfu = {'date':'','suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword'),'uid':$window.localStorage.getItem('uid')};
 
         $(".date-picker").datepicker();

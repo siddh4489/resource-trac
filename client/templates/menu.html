@@ -29,8 +29,10 @@
         <ion-content>
             <div class="row"> 
                 <div class="div1">
-                    <img class="imgC" src="/img/profile.png" alt="Avatar" style="width:100px">
-                        
+                    <img class="profile-pic" src="/img/profile.png" alt="Avatar" style="width:100px">
+                    <div class="upload-button">Upload Image</div>
+                    <input class="file-upload" type="file" accept="image/*"/>
+    
                 </div>
                 <div class="div2">
                     <h1>{{username}}</h1>
@@ -101,6 +103,24 @@
                 border-radius: 50%;
             }
 
+            .upload-button {
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+    float: left;
+}
+
+.profile-pic {
+    border-radius: 50%;
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+}
+
+.file-upload {
+    display: none;
+}     
             </style>    
         </ion-side-menu>
         

@@ -93,7 +93,6 @@ angular.module('nibs.profile', ['nibs.config'])
     //Controllers
     .controller('ProfileCtrl', function ($rootScope, $scope,$window, $state, Taskview, STATUS_LABELS, STATUS_DESCRIPTIONS) {
     
-            $('#mymodal').trigger('click');
             //$(".date-picker").datepicker();
             /*$(".date-picker").on("change", function () {
                 var id = $(this).attr("id");

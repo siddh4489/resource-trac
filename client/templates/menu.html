@@ -27,20 +27,8 @@
     <ion-side-menu side="left" style="padding:12px;">
  
         <ion-content>
-            <div class="row"> 
-                <div class="div1">
-                    <img class="profile-pic1" src="/img/profile.png" alt="Avatar" style="width:100px">
-                    <div class="upload-button">Change Image</div>
-                </div>
-                <div class="div2">
-                    <h1>{{username}}</h1>
-                </div>
-                <input class="file-upload" type="file" style="display: none; !important" accept="image/*"/>
-
-            </div>    
- 
-            
-              
+            <h1>Welcome, {{username}}</h1>
+  
             <ion-list class="top-list">
                 <ion-item nav-clear menu-close ui-sref="app.profile" class="item-icon-left">
                     <!--<i class="icon ion-arrow-graph-up-right"></i>-->
@@ -98,31 +86,7 @@
         
          
         </ion-content>
-            <style>
-            .imgC {
-                border-radius: 50%;
-            }
-
-            .upload-button {
-    padding: 4px;
-    border: 1px solid white;
-    border-radius: 5px;
-    display: block;
-    float: left;
-    color: white;
-}
-
-.profile-pic1 {
-    border:1px solid white;
-    width: auto;
-    max-width: 102px;
-    height: 80px;
-}
-
-.file-upload {
-    display: none; !important;
-}     
-            </style>    
+              
         </ion-side-menu>
         
 
